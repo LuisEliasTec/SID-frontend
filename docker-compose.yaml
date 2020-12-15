@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  ng-app:
+    restart: unless-stopped
+    container_name: ng-app
+    build: ./
+    volumes:
+      - ./:/home/app
+    working_dir: /home/app
+    ports:
+      - 4200:4200

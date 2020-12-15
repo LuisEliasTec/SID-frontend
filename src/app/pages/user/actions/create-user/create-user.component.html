@@ -1,0 +1,26 @@
+<h2>Create user</h2>
+
+<form [formGroup]="createFormGroup" class="form-group" (ngSubmit)="onSubmit()">
+  <label>
+    Email:
+    <dt-textstring
+      formControlName="email"
+      [className]="'form-control'"
+      [formControlInstance]="createFormGroup.get('email')" >
+    </dt-textstring>
+  </label>
+
+  <br>
+
+  <label>
+    Password:
+    <dt-textstring
+      formControlName="password"
+      [className]="'form-control'"
+      [formControlInstance]="createFormGroup.get('password')" >
+    </dt-textstring>
+  </label>
+  <br>
+  <button class="btn btn-info">Guardar</button>
+
+</form>
