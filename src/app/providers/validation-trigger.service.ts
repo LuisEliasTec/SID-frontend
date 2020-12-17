@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -14,5 +14,28 @@ export class ValidationTriggerService {
         this.validateAllFormFields(control);
       }
     });
+  }
+
+  checkForErrors(abstractControl: AbstractControl): string {
+    if ((abstractControl.errors && abstractControl.touched)) {
+      for (const iterator in abstractControl.errors) {
+        if (abstractControl.errors.hasOwnProperty(iterator)) {
+          switch (iterator) {
+            case 'required':
+              return 'El campo es requerido';
+            case 'minlength':
+              return 'Minimo de caracteres';
+            case 'whiteSpaces':
+              return 'No se permiten solo espacios en blanco';
+            case 'compare':
+              return 'Los campos no conciden';
+            case 'email':
+              return 'El formato del email es incorrecto';
+            default:
+              return '';
+          }
+        }
+      }
+    }
   }
 }

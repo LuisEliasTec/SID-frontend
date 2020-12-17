@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CreateUserModule } from './actions/create-user/create-user.module';
+import { DialogDataExchangeModule } from 'src/app/providers/dialog-data-exchange/dialog-data-exchange.module';
+import { DialogDataExchange } from 'src/app/providers/dialog-data-exchange/dialog-data-exchange.service';
+import { ListUsersModule } from './actions/list-users/list-users.module';
 import { UserComponent } from './user.component';
 import { USER_COMPONENT_ROUTES } from './user.routes';
 
@@ -8,8 +10,10 @@ import { USER_COMPONENT_ROUTES } from './user.routes';
   declarations: [UserComponent],
   imports: [
     RouterModule.forChild(USER_COMPONENT_ROUTES),
-    CreateUserModule,
+    ListUsersModule,
+    DialogDataExchangeModule.forRoot(new DialogDataExchange()),
   ],
+  providers: [],
   exports: [RouterModule],
 })
 export class UserModule {}

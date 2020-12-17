@@ -1,26 +1,55 @@
 <h2>Create user</h2>
 
 <form [formGroup]="createFormGroup" class="form-group" (ngSubmit)="onSubmit()">
-  <label>
-    Email:
-    <dt-textstring
-      formControlName="email"
-      [className]="'form-control'"
-      [formControlInstance]="createFormGroup.get('email')" >
-    </dt-textstring>
-  </label>
 
-  <br>
+  <div class="row">
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Nombre de usuario</mat-label>
+      <input type="text" matInput formControlName="userName">
+      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('userName'))">
+        {{tValidation.checkForErrors(createFormGroup.get('userName'))}}
+      </mat-error>
+    </mat-form-field>
 
-  <label>
-    Password:
-    <dt-textstring
-      formControlName="password"
-      [className]="'form-control'"
-      [formControlInstance]="createFormGroup.get('password')" >
-    </dt-textstring>
-  </label>
-  <br>
-  <button class="btn btn-info">Guardar</button>
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Correo Electrónico</mat-label>
+      <input type="email" matInput formControlName="email">
+      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('email'))">
+        {{tValidation.checkForErrors(createFormGroup.get('email'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('password'))">
+        {{tValidation.checkForErrors(createFormGroup.get('password'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Confirmar contraseña</mat-label>
+      <input type="password" matInput formControlName="confirmPassword">
+      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('confirmPassword'))">
+        {{tValidation.checkForErrors(createFormGroup.get('confirmPassword'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Elige una opción</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="ACTIVE">Activo</mat-option>
+        <mat-option value="INNACTIVE">Inactivo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('confirmPassword'))">
+        {{tValidation.checkForErrors(createFormGroup.get('confirmPassword'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <button class="btn btn-info">Guardar</button>
+    <button class="btn btn-warning" (click)="onNoClick()">Cerrar</button>
+  </div>
 
 </form>

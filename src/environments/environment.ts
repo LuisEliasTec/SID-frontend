@@ -4,16 +4,6 @@
 
 export const environment = {
   production: false,
-  restApi: {
-    host: process.env.API_SERVER_HOST,
-    port: process.env.API_SERVER_PORT,
-    version: process.env.API_SERVER_VERSION,
-    root: process.env.API_SERVER_ROOT,
-  },
-  apiUrl(): string {
-    const ra = this.restApi;
-    return `${ra.host}:${ra.port}/${ra.root}/${ra.version}`;
-  }
 };
 
 /*
