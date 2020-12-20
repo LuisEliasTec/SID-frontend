@@ -1,0 +1,16 @@
+footer#site-footer {
+  height: 80px;
+  opacity: 0.5;
+  background-color: #eafaf3;
+  display: flex;
+
+  .footer-container {
+    margin: 0 25px;
+    display: flex;
+    align-items: center;
+
+    .copy-section {
+      color: #07ae96;
+    }
+  }
+}

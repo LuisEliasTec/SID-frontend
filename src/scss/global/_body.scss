@@ -1,0 +1,13 @@
+body {
+  position: relative;
+  .main-container {
+    width: 100%;
+  }
+
+  .tool-bar {
+    height: 80px;
+    position: sticky;
+    top: 80px;
+    background-color: #eafaf3;
+  }
+}
