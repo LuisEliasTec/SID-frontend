@@ -27,6 +27,7 @@
     "@rxweb/reactive-form-validators": "^2.1.2",
     "bootstrap": "^4.5.3",
     "material-design-icons": "^3.0.1",
+    "moment": "^2.29.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

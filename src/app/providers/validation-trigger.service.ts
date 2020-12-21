@@ -24,13 +24,13 @@ export class ValidationTriggerService {
             case 'required':
               return 'El campo es requerido';
             case 'minlength':
-              return 'Minimo de caracteres';
+              return 'Mínimo de caracteres';
             case 'whiteSpaces':
               return 'No se permiten solo espacios en blanco';
             case 'compare':
               return 'Los campos no conciden';
             case 'email':
-              return 'El formato del email es incorrecto';
+              return 'El formato del correo electrónico es incorrecto';
             default:
               return '';
           }

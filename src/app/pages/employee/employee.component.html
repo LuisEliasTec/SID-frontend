@@ -1,1 +1,27 @@
-<h1>Empleados</h1>
+<nav class="tool-bar">
+    <div class="tool-bar-container">
+        <div class="description-section">
+            <h3 class="text-primary">Empleados</h3>
+
+            <span class="text-secondary">Todo sobre empleados</span>
+        </div>
+
+        <div class="action-section">
+            <form id="form-search">
+                <input class="search-input" type="text" placeholder="Buscar">
+            </form>
+
+            <button class="btn btn-secondary btn-tools">
+                <mat-icon>settings</mat-icon>
+            </button>
+
+            <button class="btn btn-secondary" routerLink="nuevo-empleado">Nuevo empleado</button>
+        </div>
+    </div>
+</nav>
+
+<!-- <button mat-raised-button routerLink="nuevo-usuario" class="btn btn-info">
+    Crear usuario
+  </button> -->
+<app-list-employees></app-list-employees>
+<router-outlet></router-outlet>
