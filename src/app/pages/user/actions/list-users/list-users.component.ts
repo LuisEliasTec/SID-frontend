@@ -20,7 +20,8 @@ export class ListUsersComponent implements OnDestroy {
     private router: Router,
     private activatedRouter: ActivatedRoute,
   ) {
-    this.getUsers();
+    // this.getUsers();
+
     this.subscription = this.dataExchange.getMessage().subscribe(res => {
       console.log(res);
       if (res.updated || res.created) {
