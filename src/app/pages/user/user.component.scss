@@ -1,8 +1,9 @@
 .tool-bar {
   display: flex;
-  position: sticky;
+  position: fixed;
+  top: 80px;
   z-index: 10;
-
+  width: 100%;
 
   .tool-bar-container {
     margin: 0 25px;
