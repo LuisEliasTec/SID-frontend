@@ -1,12 +1,12 @@
 header.site-header {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   background-color: red;
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   height: 80px;
   top: 0;
   z-index: 100;
   display: flex;
+  width: 100%;
 
   .nav-container {
     display: flex;
@@ -22,7 +22,8 @@ header.site-header {
   }
 
   .main-left-section {
-    > div + div, nav {
+    > div + div,
+    nav {
       margin-left: 20px;
     }
 
@@ -63,7 +64,6 @@ header.site-header {
             text-transform: uppercase;
           }
         }
-
       }
     }
   }
