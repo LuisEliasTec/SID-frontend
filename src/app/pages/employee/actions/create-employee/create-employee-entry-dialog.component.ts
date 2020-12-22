@@ -16,7 +16,7 @@ export class CreateEmployeeEntryDialogComponent {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateEmployeeComponent, {
-      width: '600px'
+      width: '800px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

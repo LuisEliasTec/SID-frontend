@@ -28,10 +28,19 @@ export class UpdateEmployeeComponent {
     this.findEmployee(this.data.id);
 
     this.updateFormGroup = fb.group({
-      // userName: fb.control('', [Validators.required]),
-      // email: fb.control('', [Validators.required, Validators.email]),
-      // password: fb.control('', [Validators.required]),
-      // confirmPassword: fb.control('', [RxwebValidators.compare({ fieldName: 'password' }), Validators.required]),
+      name: fb.control('', [Validators.required]),
+      birthDate: fb.control('', [Validators.required]),
+      phoneNumber: fb.control('', [Validators.required]),
+      optionalPhoneNumber: fb.control('', []),
+      email: fb.control('', [Validators.required, Validators.email]),
+      address: fb.control('', []),
+      postalCode: fb.control('', []),
+      city: fb.control('', []),
+      state: fb.control('', []),
+      country: fb.control('', []),
+      curp: fb.control('', []),
+      rfc: fb.control('', []),
+      nss: fb.control('', []),
       status: fb.control('', [Validators.required]),
     });
   }
@@ -40,6 +49,19 @@ export class UpdateEmployeeComponent {
     this.restApiService.get('employee', id).subscribe(res => {
       if (res._data) {
         this.isIdIn = true;
+        this.updateFormGroup.get('name').setValue(res._data.name);
+        this.updateFormGroup.get('birthDate').setValue(res._data.birthDate);
+        this.updateFormGroup.get('phoneNumber').setValue(res._data.phoneNumber);
+        this.updateFormGroup.get('optionalPhoneNumber').setValue(res._data.optionalPhoneNumber);
+        this.updateFormGroup.get('email').setValue(res._data.email);
+        this.updateFormGroup.get('address').setValue(res._data.address);
+        this.updateFormGroup.get('postalCode').setValue(res._data.postalCode);
+        this.updateFormGroup.get('city').setValue(res._data.city);
+        this.updateFormGroup.get('state').setValue(res._data.state);
+        this.updateFormGroup.get('country').setValue(res._data.country);
+        this.updateFormGroup.get('curp').setValue(res._data.curp);
+        this.updateFormGroup.get('rfc').setValue(res._data.rfc);
+        this.updateFormGroup.get('nss').setValue(res._data.nss);
         this.updateFormGroup.get('status').setValue(res._data.status);
       } else {
         this.isIdIn = false;

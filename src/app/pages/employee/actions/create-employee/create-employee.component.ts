@@ -27,13 +27,13 @@ export class CreateEmployeeComponent {
       optionalPhoneNumber: fb.control('', []),
       email: fb.control('', [Validators.required, Validators.email]),
       address: fb.control('', []),
-      cp: fb.control('', []),
+      postalCode: fb.control('', []),
       city: fb.control('', []),
       state: fb.control('', []),
       country: fb.control('', []),
-
-
-
+      curp: fb.control('', []),
+      rfc: fb.control('', []),
+      nss: fb.control('', []),
       status: fb.control('', [Validators.required]),
     });
   }

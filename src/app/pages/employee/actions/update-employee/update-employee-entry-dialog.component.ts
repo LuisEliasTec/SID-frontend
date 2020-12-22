@@ -17,7 +17,7 @@ export class UpdateEmployeeEntryDialogComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(UpdateEmployeeComponent, {
-      width: '500px',
+      width: '800px',
       data: {
         id: this.route.snapshot.params.id
       }

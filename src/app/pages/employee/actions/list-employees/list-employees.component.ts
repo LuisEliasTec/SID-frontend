@@ -16,6 +16,8 @@ export class ListEmployeesComponent implements OnDestroy {
   public displayedColumns: string[] = ['id', 'name', 'birthDate', 'phoneNumber', 'optionalPhoneNumber', 'email', 'status', 'actions'];
   subscription: Subscription;
   moment = moment;
+  value = 'Buscar';
+
   constructor(
     private restApiService: RestApiService,
     private dataExchange: DialogDataExchange,
@@ -53,7 +55,6 @@ export class ListEmployeesComponent implements OnDestroy {
       this.dataSource = res._data;
       console.log('getEmployees', res._data);
     });
-
-
   }
+  
 }
