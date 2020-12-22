@@ -6,22 +6,17 @@
       <span class="text-secondary">Todo sobre usuarios</span>
     </div>
 
-    <div class="action-section">
-      <form id="form-search">
-        <input class="search-input" type="text" placeholder="Search">
-      </form>
-
-      <button class="btn btn-secondary btn-tools">
+    <div class="action-section d-flex">
+      <button class="btn-base btn-tool-icon">
         <mat-icon>settings</mat-icon>
       </button>
 
-      <button class="btn btn-secondary">Nuevo usuario</button>
+      <button class="btn-base btn-tool" routerLink="nuevo-usuario" type="button">
+        Nuevo usuario
+      </button>
     </div>
   </div>
 </nav>
 
-<!-- <button mat-raised-button routerLink="nuevo-usuario" class="btn btn-info">
-  Crear usuario
-</button> -->
 <app-list-users></app-list-users>
 <router-outlet></router-outlet>

@@ -1,0 +1,31 @@
+.dialog-header-container {
+  height: 80px;
+  margin: -24px -24px 25px -24px;
+  background-color: #eafaf3;
+
+  .dialog-header-limiter {
+    padding: 20px 20px 8px;
+
+    h3 {
+      font-size: 22px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.09;
+      letter-spacing: normal;
+      text-align: left;
+      color: #4ca07a;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: 0.8px;
+      text-align: left;
+      color: #07ae96;
+    }
+  }
+}

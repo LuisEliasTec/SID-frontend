@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { CreateUserComponent } from './create-user.component';
 import { MatSelectModule } from '@angular/material/select';
+import { DialogHeaderModule } from 'src/app/components/layout/dialog-header/dialog-header.module';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     MatSelectModule,
+    DialogHeaderModule,
   ],
   exports: [CreateUserComponent],
   providers: []

@@ -1,0 +1,41 @@
+.btn-base {
+  text-transform: uppercase;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.85;
+  letter-spacing: 1.3px;
+  text-align: center;
+  font-weight: 500;
+  border-style: none;
+  color: #ffffff;
+}
+
+// Tool bar buttons
+
+.btn-tool {
+  padding: 10px 53px;
+  background-color: $secondary;
+  font-size: 13px;
+}
+
+.btn-tool-icon {
+  padding: 9px;
+  display: flex;
+  background-color: $secondary;
+}
+
+// Dialog buttons
+
+.btn-secondary-dialog {
+  background-color: $dark;
+  padding: 10px 74px;
+  font-size: 13px;
+}
+
+.btn-primary-dialog {
+  background-color: $secondary;
+  padding: 10px 74px;
+  font-size: 13px;
+}

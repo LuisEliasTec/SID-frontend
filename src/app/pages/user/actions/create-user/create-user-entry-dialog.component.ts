@@ -16,7 +16,7 @@ export class CreateUserEntryDialogComponent {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateUserComponent, {
-      width: '500px'
+      panelClass: 'custom-dialog-container',
     });
 
     dialogRef.afterClosed().subscribe(result => {

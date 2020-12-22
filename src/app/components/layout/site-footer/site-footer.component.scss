@@ -3,6 +3,9 @@ footer#site-footer {
   opacity: 0.5;
   background-color: #eafaf3;
   display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 
   .footer-container {
     margin: 0 25px;
