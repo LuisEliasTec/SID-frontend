@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/ models/user.interface';
 import { DialogDataExchange } from 'src/app/providers/dialog-data-exchange/dialog-data-exchange.service';
 import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-list-employees',
@@ -15,7 +14,6 @@ export class ListEmployeesComponent implements OnDestroy {
   public dataSource: IUser[] = [];
   public displayedColumns: string[] = ['id', 'name', 'birthDate', 'phoneNumber', 'optionalPhoneNumber', 'email', 'status', 'actions'];
   subscription: Subscription;
-  moment = moment
 
   constructor(
     private restApiService: RestApiService,

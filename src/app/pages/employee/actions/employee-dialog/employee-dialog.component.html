@@ -1,13 +1,14 @@
-<h2>Nuevo Empleado</h2>
+<app-dialog-header [subtitle]="'Formulario para la creación de un nuevo empleado'" [title]="titleDialog">
+</app-dialog-header>
 
-<form [formGroup]="createFormGroup" class="form-group" (ngSubmit)="onSubmit()">
+<form *ngIf="isIdIn" [formGroup]="employeeFormGroup" class="form-group" (ngSubmit)="onSubmit()">
 
   <div class="row">
     <mat-form-field class="col-lg-6" appearance="standard">
       <mat-label>Nombre de usuario</mat-label>
       <input type="text" matInput formControlName="name">
-      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('name'))">
-        {{tValidation.checkForErrors(createFormGroup.get('name'))}}
+      <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('name'))">
+        {{tValidation.checkForErrors(employeeFormGroup.get('name'))}}
       </mat-error>
     </mat-form-field>
 
@@ -16,36 +17,32 @@
       <input matInput [matDatepicker]="picker" formControlName="birthDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('birthDate'))">
-        {{tValidation.checkForErrors(createFormGroup.get('birthDate'))}}
+      <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('birthDate'))">
+        {{tValidation.checkForErrors(employeeFormGroup.get('birthDate'))}}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="col-lg-4" appearance="standard">
       <mat-label>Teléfono</mat-label>
-      <!-- <span matPrefix>+1 &nbsp;</span> -->
       <input type="tel" matInput placeholder="311-5557-1234" formControlName="phoneNumber">
-      <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
-      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('phoneNumber'))">
-        {{tValidation.checkForErrors(createFormGroup.get('phoneNumber'))}}
+      <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('phoneNumber'))">
+        {{tValidation.checkForErrors(employeeFormGroup.get('phoneNumber'))}}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="col-lg-4" appearance="standard">
       <mat-label>Teléfono opcional</mat-label>
-      <!-- <span matPrefix>+1 &nbsp;</span> -->
       <input type="tel" matInput placeholder="311-5557-1234" formControlName="optionalPhoneNumber">
-      <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
-      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('optionalPhoneNumber'))">
-        {{tValidation.checkForErrors(createFormGroup.get('optionalPhoneNumber'))}}
+      <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('optionalPhoneNumber'))">
+        {{tValidation.checkForErrors(employeeFormGroup.get('optionalPhoneNumber'))}}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="col-lg-4" appearance="standard">
       <mat-label>Correo Electrónico</mat-label>
       <input type="email" matInput formControlName="email">
-      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('email'))">
-        {{tValidation.checkForErrors(createFormGroup.get('email'))}}
+      <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('email'))">
+        {{tValidation.checkForErrors(employeeFormGroup.get('email'))}}
       </mat-error>
     </mat-form-field>
 
@@ -96,15 +93,15 @@
         <mat-option value="ACTIVE">Activo</mat-option>
         <mat-option value="INNACTIVE">Inactivo</mat-option>
       </mat-select>
-      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('status'))">
-        {{tValidation.checkForErrors(createFormGroup.get('status'))}}
+      <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('status'))">
+        {{tValidation.checkForErrors(employeeFormGroup.get('status'))}}
       </mat-error>
     </mat-form-field>
   </div>
 
-  <div class="row action-section-dialog">
-    <button class="btn btn-secondary btn-save">Guardar</button>
-    <button class="btn btn-warning" (click)="onNoClick()">Cerrar</button>
+  <div class="row dialog-actions">
+    <button class="btn-base btn-secondary-dialog" (click)="onNoClick()">Cancelar</button>
+    <button class="btn-base btn-primary-dialog">Guardar</button>
   </div>
 
 </form>
