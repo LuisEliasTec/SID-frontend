@@ -15,8 +15,7 @@ export class ListEmployeesComponent implements OnDestroy {
   public dataSource: IUser[] = [];
   public displayedColumns: string[] = ['id', 'name', 'birthDate', 'phoneNumber', 'optionalPhoneNumber', 'email', 'status', 'actions'];
   subscription: Subscription;
-  moment = moment;
-  value = 'Buscar';
+  moment = moment
 
   constructor(
     private restApiService: RestApiService,
@@ -26,7 +25,6 @@ export class ListEmployeesComponent implements OnDestroy {
   ) {
     this.getEmployees();
     this.subscription = this.dataExchange.getMessage().subscribe(res => {
-      console.log(res);
       if (res.updated || res.created) {
         this.getEmployees();
       }
@@ -38,14 +36,11 @@ export class ListEmployeesComponent implements OnDestroy {
   }
 
   modify(data) {
-    console.log(data);
     this.router.navigate(['actualizar', data._id], { relativeTo: this.activatedRouter });
   }
 
   delete(data) {
-    console.log(data);
     this.restApiService.delete('employee', data._id).subscribe((res) => {
-      console.log('sucess deletion');
       this.getEmployees();
     });
   }
@@ -53,7 +48,6 @@ export class ListEmployeesComponent implements OnDestroy {
   getEmployees() {
     this.restApiService.get('employee/list').subscribe((res) => {
       this.dataSource = res._data;
-      console.log('getEmployees', res._data);
     });
   }
   

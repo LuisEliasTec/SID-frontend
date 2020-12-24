@@ -2,7 +2,20 @@ table#list-users {
   width: 100%;
 }
 
-.user-list-container {
-  max-width: 1316px;
-  margin: 30px auto 70px;
+.status-employee-active, .status-employee-innactive {
+  color: white;
+  padding: 3px 0 3px 0;
+  font-size: 12px;
+  display: block;
+  text-align: center;
+  margin: auto 6px;
+  border-radius: 4px;
+}
+
+.status-employee-active {
+  background-color: green;
+}
+
+.status-employee-innactive {
+  background-color: red;
 }
