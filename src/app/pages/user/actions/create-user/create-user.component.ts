@@ -49,7 +49,7 @@ export class CreateUserComponent {
 
   onNoClick(): void {
     this.dialogRef.close();
-    this.dialogRef.updateSize()
+    this.dialogRef.updateSize();
   }
 
   public onSubmit(): void {
@@ -62,5 +62,11 @@ export class CreateUserComponent {
       this.dataExchange.sendValue({ created: true });
       this.dialogRef.close(res);
     });
+  }
+
+  public closeDialog(event: any): void {
+    if (event === 'CLOSED') {
+      this.dialogRef.close();
+    }
   }
 }

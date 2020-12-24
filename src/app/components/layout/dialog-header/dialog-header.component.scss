@@ -1,10 +1,10 @@
 .dialog-header-container {
-  height: 80px;
   margin: -24px -24px 25px -24px;
   background-color: #eafaf3;
 
   .dialog-header-limiter {
     padding: 20px 20px 8px;
+    position: relative;
 
     h3 {
       font-size: 22px;
@@ -26,6 +26,16 @@
       letter-spacing: 0.8px;
       text-align: left;
       color: #07ae96;
+    }
+
+    button.btn-empty-style {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

@@ -1,3 +1,12 @@
+button {
+  padding: 0;
+}
+
+.btn-empty-style {
+  border-style: none;
+  background-color: transparent;
+}
+
 .btn-base {
   text-transform: uppercase;
   border-radius: 6px;

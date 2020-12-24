@@ -1,4 +1,7 @@
-<app-dialog-header [subtitle]="'Formulario para la creación de un nuevo usuario'" [title]="'Crear usuario'">
+<app-dialog-header
+  (closeDialogEvent)="closeDialog($event)"
+  [subtitle]="'Formulario para la creación de un nuevo usuario'" 
+  [title]="'Crear usuario'">
 </app-dialog-header>
 
 <div class="dialog-container">
