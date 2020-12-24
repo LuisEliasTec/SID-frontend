@@ -5,7 +5,7 @@
   <form [formGroup]="createFormGroup" class="container-fluid" (ngSubmit)="onSubmit()">
 
     <div class="row">
-      <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-form-field class="col-sm-12 col-md-6 col-lg-6 col-xl-6" appearance="standard">
         <mat-label>Nombre de usuario</mat-label>
         <input type="text" matInput formControlName="userName">
         <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('userName'))">
@@ -13,7 +13,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-form-field class="col-sm-12 col-md-6 col-lg-6 col-xl-6" appearance="standard">
         <mat-label>Correo Electrónico</mat-label>
         <input type="email" matInput formControlName="email">
         <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('email'))">
@@ -21,7 +21,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-form-field class="col-sm-12 col-md-6 col-lg-6 col-xl-6" appearance="standard">
         <mat-label>Contraseña</mat-label>
         <input matInput type="password" formControlName="password">
         <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('password'))">
@@ -29,7 +29,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-form-field class="col-sm-12 col-md-6 col-lg-6 col-xl-6" appearance="standard">
         <mat-label>Confirmar contraseña</mat-label>
         <input type="password" matInput formControlName="confirmPassword">
         <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('confirmPassword'))">
@@ -37,7 +37,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-form-field class="col-sm-12 col-md-3 col-lg-3 col-xl-3" appearance="standard">
         <mat-label>Elige una opción</mat-label>
         <mat-select formControlName="status">
           <mat-option value="ACTIVE">Activo</mat-option>
@@ -53,6 +53,5 @@
       <button class="btn-base btn-secondary-dialog" (click)="onNoClick()">Cancelar</button>
       <button class="btn-base btn-primary-dialog">Guardar</button>
     </div>
-
   </form>
 </div>
