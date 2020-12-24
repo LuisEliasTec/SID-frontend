@@ -9,11 +9,12 @@ import { ValidationTriggerService } from 'src/app/providers/validation-trigger.s
 
 @Component({
   selector: 'app-update-employee',
-  templateUrl: './update-employee.component.html',
+  templateUrl: '../employee-dialog/employee-dialog.component.html',
 })
 export class UpdateEmployeeComponent {
-  public updateFormGroup: FormGroup;
+  public employeeFormGroup: FormGroup;
   public isIdIn = false;
+  titleDialog = 'Editar empleado';
 
   constructor(
     private fb: FormBuilder,
@@ -27,7 +28,7 @@ export class UpdateEmployeeComponent {
 
     this.findEmployee(this.data.id);
 
-    this.updateFormGroup = fb.group({
+    this.employeeFormGroup = fb.group({
       name: fb.control('', [Validators.required]),
       birthDate: fb.control('', [Validators.required]),
       phoneNumber: fb.control('', [Validators.required]),
@@ -49,20 +50,20 @@ export class UpdateEmployeeComponent {
     this.restApiService.get('employee', id).subscribe(res => {
       if (res._data) {
         this.isIdIn = true;
-        this.updateFormGroup.get('name').setValue(res._data.name);
-        this.updateFormGroup.get('birthDate').setValue(res._data.birthDate);
-        this.updateFormGroup.get('phoneNumber').setValue(res._data.phoneNumber);
-        this.updateFormGroup.get('optionalPhoneNumber').setValue(res._data.optionalPhoneNumber);
-        this.updateFormGroup.get('email').setValue(res._data.email);
-        this.updateFormGroup.get('address').setValue(res._data.address);
-        this.updateFormGroup.get('postalCode').setValue(res._data.postalCode);
-        this.updateFormGroup.get('city').setValue(res._data.city);
-        this.updateFormGroup.get('state').setValue(res._data.state);
-        this.updateFormGroup.get('country').setValue(res._data.country);
-        this.updateFormGroup.get('curp').setValue(res._data.curp);
-        this.updateFormGroup.get('rfc').setValue(res._data.rfc);
-        this.updateFormGroup.get('nss').setValue(res._data.nss);
-        this.updateFormGroup.get('status').setValue(res._data.status);
+        this.employeeFormGroup.get('name').setValue(res._data.name);
+        this.employeeFormGroup.get('birthDate').setValue(res._data.birthDate);
+        this.employeeFormGroup.get('phoneNumber').setValue(res._data.phoneNumber);
+        this.employeeFormGroup.get('optionalPhoneNumber').setValue(res._data.optionalPhoneNumber);
+        this.employeeFormGroup.get('email').setValue(res._data.email);
+        this.employeeFormGroup.get('address').setValue(res._data.address);
+        this.employeeFormGroup.get('postalCode').setValue(res._data.postalCode);
+        this.employeeFormGroup.get('city').setValue(res._data.city);
+        this.employeeFormGroup.get('state').setValue(res._data.state);
+        this.employeeFormGroup.get('country').setValue(res._data.country);
+        this.employeeFormGroup.get('curp').setValue(res._data.curp);
+        this.employeeFormGroup.get('rfc').setValue(res._data.rfc);
+        this.employeeFormGroup.get('nss').setValue(res._data.nss);
+        this.employeeFormGroup.get('status').setValue(res._data.status);
       } else {
         this.isIdIn = false;
         this.dialogRef.close(true);
@@ -75,12 +76,12 @@ export class UpdateEmployeeComponent {
   }
 
   public onSubmit(): void {
-    if (this.updateFormGroup.invalid) {
-      this.tValidation.validateAllFormFields(this.updateFormGroup);
+    if (this.employeeFormGroup.invalid) {
+      this.tValidation.validateAllFormFields(this.employeeFormGroup);
       return;
     }
 
-    this.restApiService.patch('employee', this.updateFormGroup.value, this.data.id).subscribe(res => {
+    this.restApiService.patch('employee', this.employeeFormGroup.value, this.data.id).subscribe(res => {
       this.dataExchange.sendValue({ updated: true });
       this.dialogRef.close(res);
     });

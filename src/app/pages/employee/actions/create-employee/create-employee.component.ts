@@ -8,10 +8,12 @@ import { ValidationTriggerService } from 'src/app/providers/validation-trigger.s
 
 @Component({
   selector: 'app-create-employee',
-  templateUrl: './create-employee.component.html',
+  templateUrl: '../employee-dialog/employee-dialog.component.html',
 })
 export class CreateEmployeeComponent {
-  public createFormGroup: FormGroup;
+  public employeeFormGroup: FormGroup;
+  isIdIn= true;
+  titleDialog = 'Nuevo empleado';
 
   constructor(
     private fb: FormBuilder,
@@ -20,7 +22,7 @@ export class CreateEmployeeComponent {
     public dialogRef: MatDialogRef<CreateEmployeeComponent>,
     private dataExchange: DialogDataExchange,
   ) {
-    this.createFormGroup = fb.group({
+    this.employeeFormGroup = fb.group({
       name: fb.control('', [Validators.required]),
       birthDate: fb.control('', [Validators.required]),
       phoneNumber: fb.control('', [Validators.required]),
@@ -44,12 +46,12 @@ export class CreateEmployeeComponent {
   }
 
   public onSubmit(): void {
-    if (this.createFormGroup.invalid) {
-      this.tValidation.validateAllFormFields(this.createFormGroup);
+    if (this.employeeFormGroup.invalid) {
+      this.tValidation.validateAllFormFields(this.employeeFormGroup);
       return;
     }
 
-    this.restApiService.post('employee/create', this.createFormGroup.value).subscribe(res => {
+    this.restApiService.post('employee/create', this.employeeFormGroup.value).subscribe(res => {
       this.dataExchange.sendValue({ created: true });
       this.dialogRef.close(res);
     });
