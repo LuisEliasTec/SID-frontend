@@ -2,16 +2,23 @@ import { NgModule } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { RestApiModule } from 'src/app/providers/rest-api/rest-api.module';
 import { ListEmployeesComponent } from './list-employees.component';
-import * as moment from 'moment';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { FormatDatePipeModule } from 'src/app/pipes/format-date-pipe.module';
+import { SearchSectionModule } from 'src/app/components/shared/search-section/search-section.module';
+import { TranslationUserStatusPipeModule } from 'src/app/pipes/translation-user-status-pipe.module';
+import { CommonModule } from '@angular/common';
 
-moment.locale('es');
 
 @NgModule({
   declarations: [ListEmployeesComponent],
   exports: [ListEmployeesComponent],
-  imports: [MatTableModule, RestApiModule, MatInputModule, MatButtonModule],
+  imports: [
+    MatTableModule,
+    RestApiModule,
+    FormatDatePipeModule,
+    SearchSectionModule,
+    TranslationUserStatusPipeModule,
+    CommonModule
+  ],
   providers: []
 })
 export class ListEmployeesModule { }

@@ -1,20 +1,10 @@
-<div class="user-list-container">
+<div class="base-container">
   <div class="container-fluid">
     <h2>Lista de empleados</h2>
 
-    <div>
-      <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-    </div>
+    <app-search-section></app-search-section>
 
     <table id="list-users" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-
       <!-- Id Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> NO. </th>
@@ -30,9 +20,7 @@
       <!-- Birthdate Column -->
       <ng-container matColumnDef="birthDate">
         <th mat-header-cell *matHeaderCellDef> FECHA DE NACIMIENTO </th>
-        <td mat-cell *matCellDef="let element"> {{moment(element.birthDate).format('ll')}} </td>
-        <!-- <td mat-cell *matCellDef="let element"> {{birthDate | momentPipe:'ll'}} </td> -->
-
+        <td mat-cell *matCellDef="let element"> {{birthDate | formatDate:'ll'}} </td>
       </ng-container>
 
       <!-- Phone Number Column -->
@@ -56,7 +44,9 @@
       <!-- Status Column -->
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef> ESTATUS </th>
-        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        <td mat-cell *matCellDef="let element"> 
+          <span [ngClass]="{'status-employee-active': element.status === 'ACTIVE', 'status-employee-innactive': element.status === 'INNACTIVE'}">{{element.status | translationUserStatus}}</span>  
+        </td>
       </ng-container>
 
       <!-- Actions Column -->
