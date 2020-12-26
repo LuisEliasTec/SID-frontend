@@ -1,0 +1,64 @@
+.toast-notification {
+  padding: 10px 16px;
+  background-color: white;
+  display: flex;
+  min-width: 320px;
+}
+
+.toast-body {
+  padding: 0;
+  display: flex;
+
+  > div + div {
+    margin-left: 16px;
+  }
+
+  .notification-icon {
+    align-self: center;
+
+    mat-icon {
+      font-size: 15px;
+      display: flex;
+      color: white;
+      align-self: baseline;
+    }
+
+    .rounded-circle {
+      background-color: #c2ffe3;
+      width: 38px;
+      height: 38px;
+
+      .inner.rounded-circle {
+        height: 16px;
+        width: 16px;
+        background-color: #07ae96;
+      }
+    }
+  }
+
+  .message-section {
+    flex-direction: column;
+    width: 100%;
+
+    > div + div {
+      margin-top: 10px;
+    }
+
+    .notification-header {
+      justify-content: space-between;
+
+      mat-icon {
+        font-size: 18px;
+        color: #a4afb7;
+      }
+    }
+
+    .notification-body {
+      color: #a4afb7;
+
+      * + * {
+        margin-left: 16px;
+      }
+    }
+  }
+}
