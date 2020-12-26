@@ -6,7 +6,9 @@ import { FormatDatePipeModule } from 'src/app/pipes/format-date-pipe.module';
 import { SearchSectionModule } from 'src/app/components/shared/search-section/search-section.module';
 import { TranslationUserStatusPipeModule } from 'src/app/pipes/translation-user-status-pipe.module';
 import { CommonModule } from '@angular/common';
-
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [ListEmployeesComponent],
@@ -17,7 +19,10 @@ import { CommonModule } from '@angular/common';
     FormatDatePipeModule,
     SearchSectionModule,
     TranslationUserStatusPipeModule,
-    CommonModule
+    CommonModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: []
 })
