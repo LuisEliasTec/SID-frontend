@@ -3,13 +3,21 @@ table#list-users {
 }
 .user-list-container {
   max-width: 1316px;
-  margin: 0 auto 70px;
+  margin: 30px auto 70px;
 
-  .row {
+  .scroll-container.row {
+    max-height: 800px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      background: transparent;
+    }
+
     > div {
-      margin-top: 30px;
+      margin-bottom: 30px;
     }
   }
+
   .card {
     padding: 57px 0 0 0;
     border-radius: 10px;
