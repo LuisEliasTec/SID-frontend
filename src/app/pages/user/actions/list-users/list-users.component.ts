@@ -11,7 +11,7 @@ import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
   styleUrls: ['./list-users.component.scss'],
 })
 export class ListUsersComponent implements OnDestroy {
-  public dataSource: IUser[] = [];
+  public dataSource: any = {};
   public displayedColumns: string[] = ['id', 'userName', 'email', 'status', 'actions'];
   subscription: Subscription;
 
@@ -21,6 +21,8 @@ export class ListUsersComponent implements OnDestroy {
     private router: Router,
     private activatedRouter: ActivatedRoute,
   ) {
+    this.getUsers();
+
     this.subscription = this.dataExchange.getMessage().subscribe(res => {
       if (res.updated || res.created) {
         this.getUsers();
@@ -41,8 +43,8 @@ export class ListUsersComponent implements OnDestroy {
     });
   }
 
-  getUsers(): void {
-    this.restApiService.get('user/list').subscribe((res) => {
+  getUsers(page = 0, pageSize = 5): void {
+    this.restApiService.get('user/list', null, { page, pageSize }).subscribe((res) => {
       this.dataSource = res._data;
     });
   }
