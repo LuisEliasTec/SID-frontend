@@ -10,6 +10,10 @@ export const MAIN_ROUTES: Routes = [
     loadChildren: () => import('../pages/employee/employee.module').then(m => m.EmployeeModule),
   },
   {
+    path: 'turnos',
+    loadChildren: () => import('../pages/turn/turn.module').then(m => m.TurnModule),
+  },
+  {
     path: 'usuarios',
     loadChildren: () => import('../pages/user/user.module').then(m => m.UserModule),
   },

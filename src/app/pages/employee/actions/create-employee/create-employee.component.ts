@@ -8,7 +8,7 @@ import { ValidationTriggerService } from 'src/app/providers/validation-trigger.s
 
 @Component({
   selector: 'app-create-employee',
-  templateUrl: '../employee-dialog/employee-dialog.component.html',
+  templateUrl: '../employee-dialog.component.html',
 })
 export class CreateEmployeeComponent {
   public employeeFormGroup: FormGroup;

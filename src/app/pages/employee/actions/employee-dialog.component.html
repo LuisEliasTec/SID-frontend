@@ -1,11 +1,11 @@
-<app-dialog-header [subtitle]="'Formulario para la creación de un nuevo empleado'" [title]="titleDialog">
+<app-dialog-header [subtitle]="'Ingrese los campos correspondientes'" [title]="titleDialog">
 </app-dialog-header>
 
 <form *ngIf="isIdIn" [formGroup]="employeeFormGroup" class="form-group" (ngSubmit)="onSubmit()">
 
   <div class="row">
     <mat-form-field class="col-lg-6" appearance="standard">
-      <mat-label>Nombre de usuario</mat-label>
+      <mat-label>Nombre de usuario *</mat-label>
       <input type="text" matInput formControlName="name">
       <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('name'))">
         {{tValidation.checkForErrors(employeeFormGroup.get('name'))}}
@@ -13,7 +13,7 @@
     </mat-form-field>
 
     <mat-form-field class="col-lg-4" appearance="standard">
-      <mat-label>Fecha de nacimiento</mat-label>
+      <mat-label>Fecha de nacimiento *</mat-label>
       <input matInput [matDatepicker]="picker" formControlName="birthDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
@@ -23,7 +23,7 @@
     </mat-form-field>
 
     <mat-form-field class="col-lg-4" appearance="standard">
-      <mat-label>Teléfono</mat-label>
+      <mat-label>Teléfono *</mat-label>
       <input type="tel" matInput placeholder="311-5557-1234" formControlName="phoneNumber">
       <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('phoneNumber'))">
         {{tValidation.checkForErrors(employeeFormGroup.get('phoneNumber'))}}
@@ -39,7 +39,7 @@
     </mat-form-field>
 
     <mat-form-field class="col-lg-4" appearance="standard">
-      <mat-label>Correo Electrónico</mat-label>
+      <mat-label>Correo Electrónico *</mat-label>
       <input type="email" matInput formControlName="email">
       <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('email'))">
         {{tValidation.checkForErrors(employeeFormGroup.get('email'))}}
@@ -88,7 +88,7 @@
     </mat-form-field>
 
     <mat-form-field class="col-lg-4" appearance="standard">
-      <mat-label>Seleccione una opción</mat-label>
+      <mat-label>Seleccione una opción *</mat-label>
       <mat-select formControlName="status">
         <mat-option value="ACTIVE">Activo</mat-option>
         <mat-option value="INNACTIVE">Inactivo</mat-option>
