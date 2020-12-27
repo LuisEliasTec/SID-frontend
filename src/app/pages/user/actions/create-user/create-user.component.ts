@@ -56,7 +56,7 @@ export class CreateUserComponent {
     }
 
     this.restApiService.post('user/create', this.createFormGroup.value).subscribe((res: IResponse) => {
-      if (res.status === 200) {
+      if (res.status === 201) {
         this.dataExchange.sendValue({ created: true });
         this.toastService.showSuccess();
         this.dialogRef.close(res);
