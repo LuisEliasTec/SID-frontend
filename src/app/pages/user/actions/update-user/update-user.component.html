@@ -1,39 +1,28 @@
-<h2>Update user</h2>
+<app-dialog-header
+  (closeDialogEvent)="closeDialog($event)"
+  [subtitle]="'Formulario para la actualizar un usuario'" 
+  [title]="'Actualizar usuario'">
+</app-dialog-header>
 
-<form *ngIf="isIdIn" [formGroup]="updateFormGroup" class="form-group" (ngSubmit)="onSubmit()">
+<div class="dialog-container">
+  <form [formGroup]="updateFormGroup" class="container-fluid" (ngSubmit)="onSubmit()">
 
-  <div class="row">
-    <!-- <mat-form-field class="col-lg-6" appearance="standard">
-      <mat-label>Contraseña</mat-label>
-      <input matInput type="password" formControlName="password">
-      <mat-error *ngIf="tValidation.checkForErrors(updateFormGroup.get('password'))">
-        {{tValidation.checkForErrors(updateFormGroup.get('password'))}}
-      </mat-error>
-    </mat-form-field>
+    <div class="row">
+      <mat-form-field class="col-sm-12 col-md-6 col-lg-6 col-xl-6" appearance="standard">
+        <mat-label>Elige una opción</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="ACTIVE">Activo</mat-option>
+          <mat-option value="INNACTIVE">Inactivo</mat-option>
+        </mat-select>
+        <mat-error *ngIf="tValidation.checkForErrors(updateFormGroup.get('status'))">
+          {{tValidation.checkForErrors(updateFormGroup.get('status'))}}
+        </mat-error>
+      </mat-form-field>
+    </div>
 
-    <mat-form-field class="col-lg-6" appearance="standard">
-      <mat-label>Confirmar contraseña</mat-label>
-      <input type="password" matInput formControlName="confirmPassword">
-      <mat-error *ngIf="tValidation.checkForErrors(updateFormGroup.get('confirmPassword'))">
-        {{tValidation.checkForErrors(updateFormGroup.get('confirmPassword'))}}
-      </mat-error>
-    </mat-form-field> -->
-
-    <mat-form-field appearance="standard">
-      <mat-label>Elige una opción</mat-label>
-      <mat-select formControlName="status">
-        <mat-option value="ACTIVE">Activo</mat-option>
-        <mat-option value="INNACTIVE">Inactivo</mat-option>
-      </mat-select>
-      <mat-error *ngIf="tValidation.checkForErrors(updateFormGroup.get('status'))">
-        {{tValidation.checkForErrors(updateFormGroup.get('confirmPassword'))}}
-      </mat-error>
-    </mat-form-field>
-  </div>
-
-  <div class="row">
-    <button class="btn btn-info" type="submit">Guardar</button>
-    <button class="btn btn-warning" type="button" (click)="onNoClick()">Cerrar</button>
-  </div>
-
-</form>
+    <div class="row dialog-actions">
+      <button type="button" class="btn-base btn-secondary-dialog" (click)="onCancelButton()">Cancelar</button>
+      <button type="submit" class="btn-base btn-primary-dialog">Guardar</button>
+    </div>
+  </form>
+</div>

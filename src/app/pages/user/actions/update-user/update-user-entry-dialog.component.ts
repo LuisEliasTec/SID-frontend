@@ -17,7 +17,7 @@ export class UpdateUserEntryDialogComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(UpdateUserComponent, {
-      width: '500px',
+      panelClass: 'custom-dialog-container',
       data: {
         id: this.route.snapshot.params.id
       }

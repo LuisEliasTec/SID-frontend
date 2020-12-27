@@ -41,7 +41,7 @@ export class ListUsersComponent implements OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  public modifyOne(data: IUser): void {
+  public updateOne(data: IUser): void {
     this.router.navigate(['actualizar', data._id], { relativeTo: this.activatedRouter });
   }
 

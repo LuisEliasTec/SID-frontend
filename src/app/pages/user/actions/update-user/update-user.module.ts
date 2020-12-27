@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterModule, Routes } from '@angular/router';
+import { DialogHeaderModule } from 'src/app/components/layout/dialog-header/dialog-header.module';
 import { RestApiModule } from 'src/app/providers/rest-api/rest-api.module';
 import { UpdateUserEntryDialogComponent } from './update-user-entry-dialog.component';
 import { UpdateUserComponent } from './update-user.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     MatSelectModule,
+    DialogHeaderModule,
   ],
   exports: [RouterModule]
 })

@@ -1,10 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { RxwebValidators } from '@rxweb/reactive-form-validators';
+import { BREAKPOINT_LIST, VIEWPORT_BREAKPOINTS } from 'src/app/config/consts/breakpoints.const';
 import { DialogDataExchange } from 'src/app/providers/dialog-data-exchange/dialog-data-exchange.service';
 import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
+import { ToastService } from 'src/app/providers/toast-service/toast.service';
 import { ValidationTriggerService } from 'src/app/providers/validation-trigger.service';
 
 @Component({
@@ -22,17 +23,22 @@ export class UpdateUserComponent {
     public dialogRef: MatDialogRef<UpdateUserComponent>,
     private dataExchange: DialogDataExchange,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private breakpointObserver: BreakpointObserver,
+    private toastService: ToastService,
   ) {
-
-
     this.findUser(this.data.id);
 
     this.updateFormGroup = fb.group({
-      // userName: fb.control('', [Validators.required]),
-      // email: fb.control('', [Validators.required, Validators.email]),
-      // password: fb.control('', [Validators.required]),
-      // confirmPassword: fb.control('', [RxwebValidators.compare({ fieldName: 'password' }), Validators.required]),
       status: fb.control('', [Validators.required]),
+    });
+
+    this.breakpointObserver.observe(BREAKPOINT_LIST).subscribe((res: BreakpointState) => {
+      if (res.breakpoints[VIEWPORT_BREAKPOINTS.LG] || res.breakpoints[VIEWPORT_BREAKPOINTS.XL]) {
+        this.dialogRef.updateSize('1000px');
+
+      } else if (res.breakpoints[VIEWPORT_BREAKPOINTS.MD]) {
+        this.dialogRef.updateSize('760px');
+      }
     });
   }
 
@@ -48,7 +54,7 @@ export class UpdateUserComponent {
     });
   }
 
-  onNoClick(): void {
+  onCancelButton(): void {
     this.dialogRef.close();
   }
 
@@ -59,8 +65,18 @@ export class UpdateUserComponent {
     }
 
     this.restApiService.patch('user', this.updateFormGroup.value, this.data.id).subscribe(res => {
-      this.dataExchange.sendValue({ updated: true });
-      this.dialogRef.close(res);
+
+      if (res.status === 201) {
+        this.dataExchange.sendValue({ updated: true });
+        this.dialogRef.close(res);
+        this.toastService.showSuccess();
+      }
     });
+  }
+
+  public closeDialog(event: any): void {
+    if (event === 'CLOSED') {
+      this.dialogRef.close();
+    }
   }
 }
