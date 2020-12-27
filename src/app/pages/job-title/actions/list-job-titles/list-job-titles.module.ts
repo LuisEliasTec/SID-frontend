@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { RestApiModule } from 'src/app/providers/rest-api/rest-api.module';
-import { ListTurnsComponent } from './list-turns.component';
+import { ListJobTitlesComponent } from './list-job-titles.component';
 import { FormatDatePipeModule } from 'src/app/pipes/format-date-pipe.module';
 import { SearchSectionModule } from 'src/app/components/shared/search-section/search-section.module';
 import { CommonModule } from '@angular/common';
@@ -11,8 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormatTimePipeModule } from 'src/app/pipes/format-time-pipe.module';
 
 @NgModule({
-  declarations: [ListTurnsComponent],
-  exports: [ListTurnsComponent],
+  declarations: [ListJobTitlesComponent],
+  exports: [ListJobTitlesComponent],
   imports: [
     MatTableModule,
     RestApiModule,
@@ -26,4 +26,4 @@ import { FormatTimePipeModule } from 'src/app/pipes/format-time-pipe.module';
   ],
   providers: []
 })
-export class ListTurnsModule { }
+export class ListJobTitlesModule { }
