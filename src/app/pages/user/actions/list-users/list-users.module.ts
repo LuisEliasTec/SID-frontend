@@ -5,6 +5,7 @@ import { RestApiModule } from 'src/app/providers/rest-api/rest-api.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { UserStatusPipeModule } from 'src/app/pipes/user-status-pipe.module';
+import { SweetAlertModule } from 'src/app/providers/sweet-alert/sweet-alert.module';
 
 @NgModule({
   declarations: [ListUsersComponent],
@@ -15,6 +16,7 @@ import { UserStatusPipeModule } from 'src/app/pipes/user-status-pipe.module';
     MatPaginatorModule,
     CommonModule,
     UserStatusPipeModule,
+    SweetAlertModule,
   ],
   providers: []
 })

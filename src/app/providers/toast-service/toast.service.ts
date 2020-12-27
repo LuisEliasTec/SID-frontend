@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class ToastService {
   toasts: any[] = [];
 
-  showSuccess(header: string, body: string): void {
+  showSuccess(header?: string, body?: string): void {
     this.toasts.push({ header, body });
   }
 

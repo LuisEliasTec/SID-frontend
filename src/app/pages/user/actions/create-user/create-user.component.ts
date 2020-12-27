@@ -3,9 +3,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
-import { VIEWPORT_BREAKPOINTS } from 'src/app/config/consts/breakpoints.const';
+import { IResponse } from 'src/app/ models/response.interface';
+import { BREAKPOINT_LIST, VIEWPORT_BREAKPOINTS } from 'src/app/config/consts/breakpoints.const';
 import { DialogDataExchange } from 'src/app/providers/dialog-data-exchange/dialog-data-exchange.service';
 import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
+import { ToastService } from 'src/app/providers/toast-service/toast.service';
 import { ValidationTriggerService } from 'src/app/providers/validation-trigger.service';
 
 @Component({
@@ -22,6 +24,7 @@ export class CreateUserComponent {
     public dialogRef: MatDialogRef<CreateUserComponent>,
     private dataExchange: DialogDataExchange,
     private breakpointObserver: BreakpointObserver,
+    private toastService: ToastService,
   ) {
     this.createFormGroup = fb.group({
       userName: fb.control('', [Validators.required]),
@@ -31,13 +34,7 @@ export class CreateUserComponent {
       status: fb.control('', [Validators.required]),
     });
 
-
-    this.breakpointObserver.observe([
-      VIEWPORT_BREAKPOINTS.SM,
-      VIEWPORT_BREAKPOINTS.MD,
-      VIEWPORT_BREAKPOINTS.LG,
-      VIEWPORT_BREAKPOINTS.XL,
-    ]).subscribe((res: BreakpointState) => {
+    this.breakpointObserver.observe(BREAKPOINT_LIST).subscribe((res: BreakpointState) => {
       if (res.breakpoints[VIEWPORT_BREAKPOINTS.LG]) {
         this.dialogRef.updateSize('1000px');
 
@@ -47,7 +44,7 @@ export class CreateUserComponent {
     });
   }
 
-  onNoClick(): void {
+  public onCancelButton(): void {
     this.dialogRef.close();
     this.dialogRef.updateSize();
   }
@@ -58,9 +55,12 @@ export class CreateUserComponent {
       return;
     }
 
-    this.restApiService.post('user/create', this.createFormGroup.value).subscribe(res => {
-      this.dataExchange.sendValue({ created: true });
-      this.dialogRef.close(res);
+    this.restApiService.post('user/create', this.createFormGroup.value).subscribe((res: IResponse) => {
+      if (res.status === 200) {
+        this.dataExchange.sendValue({ created: true });
+        this.toastService.showSuccess();
+        this.dialogRef.close(res);
+      }
     });
   }
 

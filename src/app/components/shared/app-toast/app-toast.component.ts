@@ -19,13 +19,13 @@ import { ToastService } from 'src/app/providers/toast-service/toast.service';
       </div>
       <div class="d-flex message-section">
         <div class="d-flex notification-header">
-          <span>{{ toast.header || 'Acción realizada con exito'}}</span>
+          <span>{{ toast.header || 'Atención!'}}</span>
           <button class="btn-empty-style" tabindex="-1" (click)="toastService.remove(toast)">
             <mat-icon aria-hidden="false" aria-label="close icon">close</mat-icon>
           </button>
         </div>
         <div class="d-flex notification-body">
-          <span class="notification-message">{{ toast.body || 'Usuario eliminado correctamente'}}</span>
+          <span class="notification-message">{{ toast.body || 'La acción fué realizada con exito'}}</span>
         </div>
       </div>
 

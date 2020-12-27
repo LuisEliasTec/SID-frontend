@@ -5,3 +5,10 @@ export const VIEWPORT_BREAKPOINTS = {
   LG: '(min-width: 1024px) and (max-width: 1439px)',
   XL: '(min-width: 1440px)',
 };
+
+export const BREAKPOINT_LIST = [
+  VIEWPORT_BREAKPOINTS.SM,
+  VIEWPORT_BREAKPOINTS.MD,
+  VIEWPORT_BREAKPOINTS.LG,
+  VIEWPORT_BREAKPOINTS.XL,
+];
