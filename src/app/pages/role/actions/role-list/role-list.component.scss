@@ -1,0 +1,54 @@
+.role-list-container {
+  > * + * {
+    margin-top: 20px;
+  }
+
+  .list-header {
+    font-size: 13px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.85;
+    letter-spacing: 1.3px;
+    text-align: left;
+    color: #cbd1d9;
+  }
+
+  .role-list-title {
+    font-size: 18px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #040e28;
+  }
+
+  #roles-form-search input {
+    width: 100%;
+  }
+
+  mat-selection-list {
+    margin-top: 0 !important;
+
+    mat-list-option:first-child {
+      border-top: solid 1px #d8eae6;
+    }
+
+    mat-list-option {
+      font-size: 15px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.6;
+      letter-spacing: normal;
+      text-align: left;
+      color: #646d82;
+
+      + mat-list-option {
+        border-top: solid 1px #d8eae6;
+      }
+    }
+  }
+}

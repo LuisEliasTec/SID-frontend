@@ -1,0 +1,38 @@
+<nav class="tool-bar">
+  <div class="tool-bar-container">
+    <div class="description-section">
+      <h3 class="text-primary">Roles</h3>
+
+      <span class="text-secondary">Todo sobre Roles</span>
+    </div>
+
+    <div class="action-section d-flex">
+      <button class="btn-base btn-tool-icon">
+        <mat-icon>settings</mat-icon>
+      </button>
+
+      <button class="btn-base btn-tool" routerLink="nuevo-usuario" type="button">
+        Renombrar
+      </button>
+      <button class="btn-base btn-tool" routerLink="nuevo-usuario" type="button">
+        Nuevo rol
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="role-container">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 role-list-block">
+        <app-role-list></app-role-list>
+      </div>
+
+      <div class="col-sm-12 col-md-9 col-lg-9 col-xl-9">
+        <app-permission-list></app-permission-list>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
