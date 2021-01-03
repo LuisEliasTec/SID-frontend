@@ -22,6 +22,10 @@ export const MAIN_ROUTES: Routes = [
     loadChildren: () => import('../pages/user/user.module').then(m => m.UserModule),
   },
   {
+    path: 'usuarios/roles',
+    loadChildren: () => import('../pages/role/role.module').then(m => m.RoleModule),
+  },
+  {
     path: 'login',
     loadChildren: () => import('../auth/login/login.module').then(m => m.LoginModule),
   },

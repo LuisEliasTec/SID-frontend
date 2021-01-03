@@ -1,0 +1,23 @@
+.tool-bar {
+  height: 80px;
+  background-color: #eafaf3;
+  display: flex;
+  position: fixed;
+  top: 80px;
+  z-index: 10;
+  width: 100%;
+
+  .tool-bar-container {
+    margin: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .action-section {
+      > * + * {
+        margin-left: 20px;
+      }
+    }
+  }
+}
