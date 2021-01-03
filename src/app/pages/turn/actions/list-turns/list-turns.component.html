@@ -20,13 +20,13 @@
       <!-- Start hour Column -->
       <ng-container matColumnDef="start_hour">
         <th mat-header-cell *matHeaderCellDef> Hora de inicio </th>
-        <td mat-cell *matCellDef="let element"> {{element.start_hour | formatTime:'h:mm a'}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.startHour | formatTime:'h:mm a'}} </td>
       </ng-container>
 
       <!-- End hour Column -->
       <ng-container matColumnDef="end_hour">
         <th mat-header-cell *matHeaderCellDef> Hora final </th>
-        <td mat-cell *matCellDef="let element"> {{element.end_hour | formatTime:'h:mm a'}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.endHour | formatTime:'h:mm a'}} </td>
       </ng-container>
 
       <!-- Actions Column -->

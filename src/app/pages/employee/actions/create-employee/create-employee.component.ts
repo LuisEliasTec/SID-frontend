@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { DialogDataExchange } from 'src/app/providers/dialog-data-exchange/dialog-data-exchange.service';
 import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
 import { ValidationTriggerService } from 'src/app/providers/validation-trigger.service';
@@ -12,8 +11,9 @@ import { ValidationTriggerService } from 'src/app/providers/validation-trigger.s
 })
 export class CreateEmployeeComponent {
   public employeeFormGroup: FormGroup;
-  isIdIn= true;
+  isIdIn = true;
   titleDialog = 'Nuevo empleado';
+  turns = [];
 
   constructor(
     private fb: FormBuilder,
@@ -37,9 +37,10 @@ export class CreateEmployeeComponent {
       rfc: fb.control('', []),
       nss: fb.control('', []),
       status: fb.control('', [Validators.required]),
+      turn: fb.control('', []),
     });
+    this.getTurns();
   }
-
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -54,6 +55,12 @@ export class CreateEmployeeComponent {
     this.restApiService.post('employee/create', this.employeeFormGroup.value).subscribe(res => {
       this.dataExchange.sendValue({ created: true });
       this.dialogRef.close(res);
+    });
+  }
+
+  getTurns(): void {
+    this.restApiService.get('turn/list').subscribe((res) => {
+      this.turns = res._data;
     });
   }
 }

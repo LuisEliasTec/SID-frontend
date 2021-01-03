@@ -29,8 +29,8 @@ export class UpdateTurnComponent {
 
     this.turnFormGroup = fb.group({
       name: fb.control('', [Validators.required]),
-      start_hour: fb.control('', [Validators.required]),
-      end_hour: fb.control('', [Validators.required]),
+      startHour: fb.control('', [Validators.required]),
+      endHour: fb.control('', [Validators.required]),
     });
   }
 
@@ -39,8 +39,8 @@ export class UpdateTurnComponent {
       if (res._data) {
         this.isIdIn = true;
         this.turnFormGroup.get('name').setValue(res._data.name);
-        this.turnFormGroup.get('start_hour').setValue(this.formatTimePickerService.setFormatObject(res._data.start_hour));
-        this.turnFormGroup.get('end_hour').setValue(this.formatTimePickerService.setFormatObject(res._data.end_hour));
+        this.turnFormGroup.get('startHour').setValue(this.formatTimePickerService.setFormatObject(res._data.startHour));
+        this.turnFormGroup.get('endHour').setValue(this.formatTimePickerService.setFormatObject(res._data.endHour));
       } else {
         this.isIdIn = false;
         this.dialogRef.close(true);
@@ -57,10 +57,10 @@ export class UpdateTurnComponent {
       this.tValidation.validateAllFormFields(this.turnFormGroup);
       return;
     }
-    const startHourTemp1 = this.turnFormGroup.get('start_hour').value;
-    const endtHourTem2 = this.turnFormGroup.get('end_hour').value
-    this.turnFormGroup.get('start_hour').setValue(startHourTemp1.hour.toString() + ':' + startHourTemp1.minute.toString())
-    this.turnFormGroup.get('end_hour').setValue(endtHourTem2.hour.toString() + ':' + endtHourTem2.minute.toString())
+    const startHourTemp1 = this.turnFormGroup.get('startHour').value;
+    const endtHourTem2 = this.turnFormGroup.get('endHour').value;
+    this.turnFormGroup.get('startHour').setValue(this.formatTimePickerService.setFormatDate(startHourTemp1));
+    this.turnFormGroup.get('endHour').setValue(this.formatTimePickerService.setFormatDate(endtHourTem2));
 
     this.restApiService.patch('turn', this.turnFormGroup.value, this.data.id).subscribe(res => {
       this.dataExchange.sendValue({ updated: true });

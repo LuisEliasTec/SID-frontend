@@ -97,6 +97,16 @@
         {{tValidation.checkForErrors(employeeFormGroup.get('status'))}}
       </mat-error>
     </mat-form-field>
+
+    <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>Seleccione una opción</mat-label>
+      <mat-select formControlName="turn">
+        <mat-option *ngFor="let item of turns" value="item">{{item.name}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('turn'))">
+        {{tValidation.checkForErrors(employeeFormGroup.get('turn'))}}
+      </mat-error>
+    </mat-form-field>
   </div>
 
   <div class="row dialog-actions">

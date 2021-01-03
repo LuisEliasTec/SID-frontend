@@ -26,8 +26,8 @@ export class CreateTurnComponent {
   ) {
     this.turnFormGroup = fb.group({
       name: fb.control('', [Validators.required]),
-      start_hour: fb.control('', [Validators.required]),
-      end_hour: fb.control('', [Validators.required]),
+      startHour: fb.control('', [Validators.required]),
+      endHour: fb.control('', [Validators.required]),
     });
   }
 
@@ -42,8 +42,8 @@ export class CreateTurnComponent {
     }
 
     const formDataTemp = this.turnFormGroup.value;
-    formDataTemp.start_hour = this.formatTimePickerService.setFormatString(formDataTemp.start_hour);
-    formDataTemp.end_hour = this.formatTimePickerService.setFormatString(formDataTemp.end_hour);
+    formDataTemp.startHour = this.formatTimePickerService.setFormatDate(formDataTemp.startHour);
+    formDataTemp.endHour = this.formatTimePickerService.setFormatDate(formDataTemp.endHour);
 
     this.restApiService.post('turn/create', this.turnFormGroup.value).subscribe(res => {
       this.dataExchange.sendValue({ created: true });
