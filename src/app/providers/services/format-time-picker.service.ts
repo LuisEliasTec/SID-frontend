@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
+import { ITimePicker } from 'src/app/ models/time-picker.interface';
 
 @Injectable()
 export class FormatTimePickerService {
 
-    constructor() { }
+  constructor() { }
 
-    setFormatObject(time: String) {
-        const splitted = time.split(':', 2);
-        return {
-            hour: parseInt(splitted[0], 10),
-            minute: parseInt(splitted[1], 10)
-        };
-    }
+  setFormatObject(time: string): ITimePicker {
+    const newTime = new Date(time);
+    return {
+      hour: newTime.getHours(),
+      minute: newTime.getMinutes()
+    };
+  }
 
-    setFormatString(time: any) {
-        return time.hour + ':' + time.minute;
-    }
+  setFormatDate(time: any): Date {
+    const today = new Date();
+    const newDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), time.hour, time.minute, 0);
+    return new Date(newDate);
+  }
 
 }
