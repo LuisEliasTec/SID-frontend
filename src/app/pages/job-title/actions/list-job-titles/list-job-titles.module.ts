@@ -9,6 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormatTimePipeModule } from 'src/app/pipes/format-time-pipe.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [ListJobTitlesComponent],
@@ -22,7 +23,8 @@ import { FormatTimePipeModule } from 'src/app/pipes/format-time-pipe.module';
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
-    FormatTimePipeModule
+    FormatTimePipeModule,
+    MatPaginatorModule
   ],
   providers: []
 })

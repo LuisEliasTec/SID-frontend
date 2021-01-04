@@ -46,31 +46,54 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="col-lg-8" appearance="standard">
-      <mat-label>Dirección</mat-label>
-      <textarea matInput placeholder="Ex. 100 Main St" formControlName="address">1600 Amphitheatre Pkwy</textarea>
-    </mat-form-field>
+    <div formGroupName="address">
+      <mat-form-field class="col-lg-8" appearance="standard">
+        <mat-label>Calle</mat-label>
+        <textarea matInput placeholder="Ex. 100 Main St" formControlName="street">1600 Amphitheatre Pkwy</textarea>
+      </mat-form-field>
 
-    <mat-form-field class="col-lg-4" appearance="standard">
-      <mat-label>Código Postal</mat-label>
-      <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043" formControlName="postalCode">
-      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-    </mat-form-field>
+      <mat-form-field class="col-lg-4" appearance="standard">
+        <mat-label>Número interior *</mat-label>
+        <input type="number" matInput placeholder="" formControlName="interiorNumber">
+        <!-- <mat-error *ngIf="tValidation.checkForErrors(address.get('interiorNumber'))">
+          {{tValidation.checkForErrors(address.get('interiorNumber'))}}
+        </mat-error> -->
+      </mat-form-field>
 
-    <mat-form-field class="col-lg-4" appearance="standard">
-      <mat-label>Ciudad</mat-label>
-      <input matInput placeholder="Ex. San Francisco" formControlName="city">
-    </mat-form-field>
+      <mat-form-field class="col-lg-4" appearance="standard">
+        <mat-label>Número exterior *</mat-label>
+        <input type="number" matInput placeholder="" formControlName="exteriorNumber">
+        <!-- <mat-error *ngIf="tValidation.checkForErrors(address.get('exteriorNumber'))">
+          {{tValidation.checkForErrors(address.get('exteriorNumber'))}}
+        </mat-error> -->
+      </mat-form-field>
 
-    <mat-form-field class="col-lg-4" appearance="standard">
-      <mat-label>Estado</mat-label>
-      <input matInput placeholder="Ex. San Francisco" formControlName="state">
-    </mat-form-field>
+      <mat-form-field class="col-lg-4" appearance="standard">
+        <mat-label>Colonia</mat-label>
+        <input matInput placeholder="Ex. San Francisco" formControlName="neighborhood">
+      </mat-form-field>
 
-    <mat-form-field class="col-lg-4" appearance="standard">
-      <mat-label>País</mat-label>
-      <input matInput placeholder="Ex. San Francisco" formControlName="country">
-    </mat-form-field>
+      <mat-form-field class="col-lg-4" appearance="standard">
+        <mat-label>Ciudad</mat-label>
+        <input matInput placeholder="Ex. San Francisco" formControlName="city">
+      </mat-form-field>
+
+      <mat-form-field class="col-lg-4" appearance="standard">
+        <mat-label>Estado</mat-label>
+        <input matInput placeholder="Ex. San Francisco" formControlName="state">
+      </mat-form-field>
+
+      <mat-form-field class="col-lg-4" appearance="standard">
+        <mat-label>País</mat-label>
+        <input matInput placeholder="Ex. San Francisco" formControlName="country">
+      </mat-form-field>
+
+      <mat-form-field class="col-lg-4" appearance="standard">
+        <mat-label>Código Postal</mat-label>
+        <input matInput #zipCode maxlength="5" placeholder="Ex. 94105" value="94043" formControlName="zipCode">
+        <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+      </mat-form-field>
+    </div>
 
     <mat-form-field class="col-lg-4" appearance="standard">
       <mat-label>C.U.R.P.</mat-label>
@@ -88,6 +111,16 @@
     </mat-form-field>
 
     <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>Seleccione una opción</mat-label>
+      <mat-select formControlName="turn">
+        <mat-option *ngFor="let item of turns" value="item">{{item.name}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('turn'))">
+        {{tValidation.checkForErrors(employeeFormGroup.get('turn'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-4" appearance="standard">
       <mat-label>Seleccione una opción *</mat-label>
       <mat-select formControlName="status">
         <mat-option value="ACTIVE">Activo</mat-option>
@@ -95,16 +128,6 @@
       </mat-select>
       <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('status'))">
         {{tValidation.checkForErrors(employeeFormGroup.get('status'))}}
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="col-lg-4" appearance="standard">
-      <mat-label>Seleccione una opción</mat-label>
-      <mat-select formControlName="turn">
-        <mat-option *ngFor="let item of turns" value="item">{{item.name}}</mat-option>
-      </mat-select>
-      <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('turn'))">
-        {{tValidation.checkForErrors(employeeFormGroup.get('turn'))}}
       </mat-error>
     </mat-form-field>
   </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogDataExchange } from 'src/app/providers/dialog-data-exchange/dialog-data-exchange.service';
 import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
@@ -28,11 +28,21 @@ export class CreateEmployeeComponent {
       phoneNumber: fb.control('', [Validators.required]),
       optionalPhoneNumber: fb.control('', []),
       email: fb.control('', [Validators.required, Validators.email]),
-      address: fb.control('', []),
-      postalCode: fb.control('', []),
-      city: fb.control('', []),
-      state: fb.control('', []),
-      country: fb.control('', []),
+      // address: fb.control('', []),
+      // postalCode: fb.control('', []),
+      // city: fb.control('', []),
+      // state: fb.control('', []),
+      // country: fb.control('', []),
+      address: new FormGroup({
+        street: new FormControl('', [Validators.required]),
+        interiorNumber: new FormControl('', []),
+        exteriorNumber: new FormControl('', [Validators.required]),
+        neighborhood: new FormControl('', []),
+        city: new FormControl('', []),
+        state: new FormControl('', []),
+        country: new FormControl('', []),
+        zipCode: new FormControl('', []),
+      }),
       curp: fb.control('', []),
       rfc: fb.control('', []),
       nss: fb.control('', []),

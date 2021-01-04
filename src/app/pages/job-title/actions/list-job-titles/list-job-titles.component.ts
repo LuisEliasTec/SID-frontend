@@ -1,9 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IUser } from 'src/app/ models/user.interface';
 import { DialogDataExchange } from 'src/app/providers/dialog-data-exchange/dialog-data-exchange.service';
 import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
+import { IResponse } from 'src/app/ models/response.interface';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-list-job-titles',
@@ -11,7 +12,8 @@ import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
   styleUrls: ['./list-job-titles.component.scss'],
 })
 export class ListJobTitlesComponent implements OnDestroy {
-  public dataSource: IUser[] = [];
+  public dataSource = new MatTableDataSource();
+  // public dataSource: any = {};
   public displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
   subscription: Subscription;
 
@@ -21,10 +23,10 @@ export class ListJobTitlesComponent implements OnDestroy {
     private router: Router,
     private activatedRouter: ActivatedRoute,
   ) {
-    this.getEmployees();
+    this.getJobTitles();
     this.subscription = this.dataExchange.getMessage().subscribe(res => {
       if (res.updated || res.created) {
-        this.getEmployees();
+        this.getJobTitles();
       }
     });
   }
@@ -33,20 +35,20 @@ export class ListJobTitlesComponent implements OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  modify(data) {
+  modify(data): void {
     this.router.navigate(['actualizar', data._id], { relativeTo: this.activatedRouter });
   }
 
-  delete(data) {
+  delete(data): void {
     this.restApiService.delete('job-title', data._id).subscribe((res) => {
-      this.getEmployees();
+      this.getJobTitles();
     });
   }
 
-  getEmployees() {
-    this.restApiService.get('job-title/list').subscribe((res) => {
+  public getJobTitles(page = 0, pageSize = 5): void {
+    this.restApiService.get('job-title/list', null, { page, pageSize }).subscribe((res: IResponse) => {
       this.dataSource = res._data;
     });
   }
-  
+
 }
