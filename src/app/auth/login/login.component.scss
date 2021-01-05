@@ -1,0 +1,22 @@
+.login-container {
+  padding-top: 250px;
+  max-width: 370px;
+  margin: 0 auto;
+
+  .container-fluid {
+    > * + * {
+      margin-top: 45px;
+    }
+  }
+  
+  img.login-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .login-form {
+    > * + * {
+      margin-top: 45px;
+    }
+  }
+}

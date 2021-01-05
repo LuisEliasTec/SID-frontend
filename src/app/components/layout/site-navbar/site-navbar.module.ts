@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { SiteNavbarComponent } from './site-navbar.component';
-
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 
