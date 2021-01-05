@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { SessionService } from '../session/session.service';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class RestApiService {
   private baseUrl = 'http://localhost:3000/api/v1';
   private httpOptions = { headers: new HttpHeaders(), params: new HttpParams() };
 
-  constructor(private http: HttpClient, private session: SessionService) { }
+  constructor(private http: HttpClient, private session: SessionService) {}
 
   login(url: string, body: any): Observable<any> {
     const finalUrl = `${this.baseUrl}/${url}`;
 
-    return this.http.post(finalUrl, body);
+    return this.http.post(finalUrl, body).pipe(catchError(error => {
+      return of(error);
+    }));
   }
 
   post(url: string, body: any): Observable<any> {

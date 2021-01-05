@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SiteFooterModule } from '../components/layout/site-footer/site-footer.module';
 import { SiteNavbarModule } from '../components/layout/site-navbar/site-navbar.module';
-import { AppToastModule } from '../components/shared/app-toast/app-toast.module';
 import { ToastService } from '../providers/toast-service/toast.service';
 import { MODULES_ROUTES } from './modules.routes';
 import { ModulesComponent } from './modules.component';
@@ -13,7 +12,6 @@ import { ModulesComponent } from './modules.component';
     RouterModule.forChild(MODULES_ROUTES),
     SiteNavbarModule,
     SiteFooterModule,
-    AppToastModule,
   ],
   exports: [],
   providers: [ToastService],

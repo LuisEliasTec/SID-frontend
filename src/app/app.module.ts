@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { AppToastModule } from './components/shared/app-toast/app-toast.module';
 
 const ROUTES: Routes = [
   {
