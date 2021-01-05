@@ -1,0 +1,30 @@
+<app-dialog-header [subtitle]="'Ingrese los campos correspondientes'" [title]="titleDialog">
+</app-dialog-header>
+
+<form *ngIf="isIdIn" [formGroup]="turnFormGroup" class="form-group" (ngSubmit)="onSubmit()">
+
+  <div class="row">
+    <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>Nombre del turno *</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-error *ngIf="tValidation.checkForErrors(turnFormGroup.get('name'))">
+        {{tValidation.checkForErrors(turnFormGroup.get('name'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <div class="col-lg-4">
+      <ngb-timepicker [meridian]="meridian" formControlName="startHour"></ngb-timepicker>
+    </div>
+
+    <div class="col-lg-4">
+      <ngb-timepicker [meridian]="meridian" formControlName="endHour"></ngb-timepicker>
+    </div>
+
+  </div>
+
+  <div class="row dialog-actions">
+    <button class="btn-base btn-secondary-dialog" (click)="onNoClick()">Cancelar</button>
+    <button class="btn-base btn-primary-dialog">Guardar</button>
+  </div>
+
+</form>

@@ -4,18 +4,17 @@ import { Subscription } from 'rxjs';
 import { DialogDataExchange } from 'src/app/providers/dialog-data-exchange/dialog-data-exchange.service';
 import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
 import { IResponse } from 'src/app/ models/response.interface';
-import { IEmployee } from 'src/app/ models/employee.interface';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'app-list-employees',
-  templateUrl: './list-employees.component.html',
-  styleUrls: ['./list-employees.component.scss'],
+  selector: 'app-list-job-titles',
+  templateUrl: './list-job-titles.component.html',
+  styleUrls: ['./list-job-titles.component.scss'],
 })
-export class ListEmployeesComponent implements OnDestroy {
+export class ListJobTitlesComponent implements OnDestroy {
   public dataSource = new MatTableDataSource();
-  public displayedColumns: string[] = ['id', 'name', 'birthDate', 'phoneNumber',
-    'optionalPhoneNumber', 'email', 'status', 'actions'];
+  // public dataSource: any = {};
+  public displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
   subscription: Subscription;
 
   constructor(
@@ -24,10 +23,10 @@ export class ListEmployeesComponent implements OnDestroy {
     private router: Router,
     private activatedRouter: ActivatedRoute,
   ) {
-    this.getEmployees();
+    this.getJobTitles();
     this.subscription = this.dataExchange.getMessage().subscribe(res => {
       if (res.updated || res.created) {
-        this.getEmployees();
+        this.getJobTitles();
       }
     });
   }
@@ -36,19 +35,18 @@ export class ListEmployeesComponent implements OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  modify(data): void{
-    this.router.navigate(['actualizar', data._id],
-      { relativeTo: this.activatedRouter });
+  modify(data): void {
+    this.router.navigate(['actualizar', data._id], { relativeTo: this.activatedRouter });
   }
 
   delete(data): void {
-    this.restApiService.delete('employee', data._id).subscribe((res) => {
-      this.getEmployees();
+    this.restApiService.delete('job-title', data._id).subscribe((res) => {
+      this.getJobTitles();
     });
   }
 
-  public getEmployees(page = 0, pageSize = 5): void {
-    this.restApiService.get('employee/list', null, { page, pageSize }).subscribe((res: IResponse) => {
+  public getJobTitles(page = 0, pageSize = 5): void {
+    this.restApiService.get('job-title/list', null, { page, pageSize }).subscribe((res: IResponse) => {
       this.dataSource = res._data;
     });
   }

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
@@ -9,7 +9,7 @@ import { ValidationTriggerService } from 'src/app/providers/validation-trigger.s
 
 @Component({
   selector: 'app-update-employee',
-  templateUrl: '../employee-dialog/employee-dialog.component.html',
+  templateUrl: '../employee-dialog.component.html',
 })
 export class UpdateEmployeeComponent {
   public employeeFormGroup: FormGroup;
@@ -34,21 +34,28 @@ export class UpdateEmployeeComponent {
       phoneNumber: fb.control('', [Validators.required]),
       optionalPhoneNumber: fb.control('', []),
       email: fb.control('', [Validators.required, Validators.email]),
-      address: fb.control('', []),
-      postalCode: fb.control('', []),
-      city: fb.control('', []),
-      state: fb.control('', []),
-      country: fb.control('', []),
+      address: new FormGroup({
+        street: new FormControl('', [Validators.required]),
+        interiorNumber: new FormControl('', []),
+        exteriorNumber: new FormControl('', [Validators.required]),
+        neighborhood: new FormControl('', []),
+        city: new FormControl('', []),
+        state: new FormControl('', []),
+        country: new FormControl('', []),
+        zipCode: new FormControl('', []),
+      }),
       curp: fb.control('', []),
       rfc: fb.control('', []),
       nss: fb.control('', []),
       status: fb.control('', [Validators.required]),
+      turn: fb.control('', []),
     });
   }
 
   findEmployee(id: string): void {
     this.restApiService.get('employee', id).subscribe(res => {
       if (res._data) {
+        console.log('show employees', res._data);
         this.isIdIn = true;
         this.employeeFormGroup.get('name').setValue(res._data.name);
         this.employeeFormGroup.get('birthDate').setValue(res._data.birthDate);

@@ -1,0 +1,29 @@
+<app-dialog-header [subtitle]="'Ingrese los campos correspondientes'" [title]="titleDialog">
+</app-dialog-header>
+
+<form *ngIf="isIdIn" [formGroup]="jobTitleFormGroup" class="form-group" (ngSubmit)="onSubmit()">
+
+  <div class="row">
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Nombre del puesto laboral *</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-error *ngIf="tValidation.checkForErrors(jobTitleFormGroup.get('name'))">
+        {{tValidation.checkForErrors(jobTitleFormGroup.get('name'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Descripción</mat-label>
+      <input type="text" matInput formControlName="description">
+      <mat-error *ngIf="tValidation.checkForErrors(jobTitleFormGroup.get('description'))">
+        {{tValidation.checkForErrors(jobTitleFormGroup.get('description'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row dialog-actions">
+    <button class="btn-base btn-secondary-dialog" (click)="onNoClick()">Cancelar</button>
+    <button class="btn-base btn-primary-dialog">Guardar</button>
+  </div>
+
+</form>
