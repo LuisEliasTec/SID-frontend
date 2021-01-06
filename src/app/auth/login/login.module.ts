@@ -6,8 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { AppToastModule } from 'src/app/components/shared/app-toast/app-toast.module';
-import { LocalStorageModule } from 'src/app/providers/local-storage/local-storage.module';
 import { RestApiModule } from 'src/app/providers/rest-api/rest-api.module';
+import { SessionModule } from 'src/app/providers/session/session.module';
 import { LoginComponent } from './login.component';
 import { LOGIN_ROUTES } from './login.routes';
 
@@ -22,7 +22,7 @@ import { LOGIN_ROUTES } from './login.routes';
     FormsModule,
     ReactiveFormsModule,
     RestApiModule,
-    LocalStorageModule,
+    SessionModule,
     AppToastModule,
   ],
   exports: [RouterModule],

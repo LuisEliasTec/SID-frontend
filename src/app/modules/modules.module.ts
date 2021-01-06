@@ -5,6 +5,9 @@ import { SiteNavbarModule } from '../components/layout/site-navbar/site-navbar.m
 import { ToastService } from '../providers/toast-service/toast.service';
 import { MODULES_ROUTES } from './modules.routes';
 import { ModulesComponent } from './modules.component';
+import { PermissionGuard } from '../auth/guards/permission.guard';
+import { SessionModule } from '../providers/session/session.module';
+import { PermissionsModule } from '../auth/permissions-service/permissions.module';
 
 @NgModule({
   declarations: [ModulesComponent],
@@ -12,8 +15,9 @@ import { ModulesComponent } from './modules.component';
     RouterModule.forChild(MODULES_ROUTES),
     SiteNavbarModule,
     SiteFooterModule,
+    PermissionsModule,
   ],
   exports: [],
-  providers: [ToastService],
+  providers: [ToastService, PermissionGuard],
 })
 export class ModulesModule {}

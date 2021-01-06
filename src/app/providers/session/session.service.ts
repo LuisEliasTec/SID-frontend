@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class SessionService {
-  private tokenName = 'nk';
+  private tokenName = 'kr';
 
   constructor(private router: Router) { }
 
@@ -19,5 +19,9 @@ export class SessionService {
 
   getToken(): string {
     return localStorage.getItem(this.tokenName);
+  }
+
+  isThereAnyToken(): boolean {
+    return localStorage.getItem(this.tokenName) ? true : false;
   }
 }

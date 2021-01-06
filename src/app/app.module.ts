@@ -4,7 +4,8 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
-import { AppToastModule } from './components/shared/app-toast/app-toast.module';
+import { PermissionGuard } from './auth/guards/permission.guard';
+import { PermissionsModule } from './auth/permissions-service/permissions.module';
 
 const ROUTES: Routes = [
   {
@@ -17,6 +18,7 @@ const ROUTES: Routes = [
       },
       {
         path: 'login',
+        canActivate: [PermissionGuard],
         loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule),
       },
       {
@@ -35,11 +37,13 @@ const ROUTES: Routes = [
   declarations: [
     AppComponent,
   ],
+  providers: [PermissionGuard],
   imports: [
     BrowserModule,
     NgbModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
+    PermissionsModule
   ],
   bootstrap: [AppComponent]
 })
