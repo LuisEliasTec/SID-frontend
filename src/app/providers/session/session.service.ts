@@ -14,7 +14,7 @@ export class SessionService {
   logout(): void {
     localStorage.removeItem(this.tokenName);
 
-    this.router.navigate(['/login']);
+    this.router.navigate(['/sys/login']);
   }
 
   getToken(): string {
