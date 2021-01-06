@@ -53,18 +53,18 @@
       </mat-form-field>
 
       <mat-form-field class="col-lg-4" appearance="standard">
-        <mat-label>Número interior *</mat-label>
-        <input type="number" matInput placeholder="" formControlName="interiorNumber">
-        <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('address.interiorNumber'))">
-          {{tValidation.checkForErrors(employeeFormGroup.get('address.interiorNumber'))}}
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field class="col-lg-4" appearance="standard">
         <mat-label>Número exterior *</mat-label>
         <input type="number" matInput placeholder="" formControlName="exteriorNumber">
         <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('address.exteriorNumber'))">
           {{tValidation.checkForErrors(employeeFormGroup.get('address.exteriorNumber'))}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-lg-4" appearance="standard">
+        <mat-label>Número interior *</mat-label>
+        <input type="number" matInput placeholder="" formControlName="interiorNumber">
+        <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('address.interiorNumber'))">
+          {{tValidation.checkForErrors(employeeFormGroup.get('address.interiorNumber'))}}
         </mat-error>
       </mat-form-field>
 
@@ -110,18 +110,20 @@
       <input matInput placeholder="Ex. San Francisco" formControlName="nss">
     </mat-form-field>
 
-    <mat-form-field class="col-lg-4" appearance="standard">
-      <mat-label>Seleccione una opción</mat-label>
-      <mat-select formControlName="turn">
-        <mat-option *ngFor="let item of turns" value="item">{{item.name}}</mat-option>
-      </mat-select>
-      <mat-error *ngIf="tValidation.checkForErrors(employeeFormGroup.get('turn'))">
-        {{tValidation.checkForErrors(employeeFormGroup.get('turn'))}}
-      </mat-error>
-    </mat-form-field>
+    <div class="col-lg-6">
+      <ng-select [multiple]="true" formControlName="jobTitle" placeholder="Seleccione un puesto laboral">
+        <ng-option *ngFor="let item of jobTitles" [value]="item._id">{{item.name}}</ng-option>
+      </ng-select>
+    </div>
+
+    <div class="col-lg-6">
+      <ng-select [multiple]="true" formControlName="turn" placeholder="Seleccione un turno">
+        <ng-option *ngFor="let item of turns" [value]="item._id">{{item.name}}</ng-option>
+      </ng-select>
+    </div>
 
     <mat-form-field class="col-lg-4" appearance="standard">
-      <mat-label>Seleccione una opción *</mat-label>
+      <mat-label>Seleccione un estatus *</mat-label>
       <mat-select formControlName="status">
         <mat-option value="ACTIVE">Activo</mat-option>
         <mat-option value="INNACTIVE">Inactivo</mat-option>
@@ -135,7 +137,6 @@
   <div class="row dialog-actions">
     <button class="btn-base btn-secondary-dialog" (click)="onNoClick()">Cancelar</button>
     <button class="btn-base btn-primary-dialog">Guardar</button>
-    <button (click)="test()">TEST</button>
   </div>
 
 </form>

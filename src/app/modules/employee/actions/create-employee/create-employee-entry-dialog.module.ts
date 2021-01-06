@@ -13,6 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogHeaderModule } from 'src/app/components/layout/dialog-header/dialog-header.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const routes: Routes = [
   {
@@ -35,7 +36,8 @@ const routes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
-    DialogHeaderModule
+    DialogHeaderModule,
+    NgSelectModule
   ],
   exports: [CreateEmployeeComponent],
   providers: []

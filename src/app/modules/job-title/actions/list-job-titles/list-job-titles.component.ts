@@ -13,7 +13,6 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ListJobTitlesComponent implements OnDestroy {
   public dataSource = new MatTableDataSource();
-  // public dataSource: any = {};
   public displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
   subscription: Subscription;
 

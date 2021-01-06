@@ -15,6 +15,10 @@ export const MODULES_ROUTES: Routes = [
         loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule),
       },
       {
+        path: 'puestos-laborales',
+        loadChildren: () => import('./job-title/job-title.module').then(m => m.JobTitleModule),
+      },
+      {
         path: 'usuarios',
         loadChildren: () => import('./user/user.module').then(m => m.UserModule),
       },

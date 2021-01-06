@@ -14,6 +14,7 @@ export class CreateEmployeeComponent {
   isIdIn = true;
   titleDialog = 'Nuevo empleado';
   turns = [];
+  jobTitles = [];
 
   constructor(
     private fb: FormBuilder,
@@ -42,9 +43,11 @@ export class CreateEmployeeComponent {
       rfc: fb.control('', []),
       nss: fb.control('', []),
       status: fb.control('', [Validators.required]),
-      turn: fb.control('', []),
+      turn: fb.control('', [Validators.required]),
+      jobTitle: fb.control('', [Validators.required])
     });
     this.getTurns();
+    this.getJobTitles();
   }
 
   onNoClick(): void {
@@ -69,8 +72,10 @@ export class CreateEmployeeComponent {
     });
   }
 
-  test(): void {
-    console.log('address', this.employeeFormGroup.get('address').value);
-    console.log('street', this.employeeFormGroup.get('address.street').value);
+  getJobTitles(): void {
+    this.restApiService.get('job-title/list').subscribe((res) => {
+      this.jobTitles = res._data.data;
+      console.log('jobTitles', res._data.data);
+    });
   }
 }

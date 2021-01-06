@@ -17,4 +17,4 @@ import { JOB_TITLE_COMPONENT_ROUTES } from './job-title.routes';
   ],
   exports: [RouterModule],
 })
-export class JobTitleModule {}
+export class JobTitleModule { }
