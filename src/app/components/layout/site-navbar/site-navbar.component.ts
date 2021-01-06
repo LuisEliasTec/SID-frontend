@@ -5,8 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './site-navbar.component.html',
   styleUrls: ['./site-navbar.component.scss'],
 })
-export class SiteNavbarComponent {
-  constructor() {
-    console.log('hello');
-  }
-}
+export class SiteNavbarComponent { }
