@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { PermissionGuard } from '../auth/guards/permission.guard';
+import { Permissions } from '../auth/permissions/permissions.enum';
 import { ModulesComponent } from './modules.component';
 
 export const MODULES_ROUTES: Routes = [
@@ -20,6 +22,10 @@ export const MODULES_ROUTES: Routes = [
       },
       {
         path: 'usuarios',
+        canActivate: [PermissionGuard],
+        data: {
+          permissions: [Permissions.READ_USER],
+        },
         loadChildren: () => import('./user/user.module').then(m => m.UserModule),
       },
       {

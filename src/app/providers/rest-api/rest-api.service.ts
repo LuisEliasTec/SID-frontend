@@ -22,11 +22,11 @@ export class RestApiService {
   post(url: string, body: any): Observable<any> {
     const finalUrl = `${this.baseUrl}/${url}`;
 
-    // this.httpOptions.headers =
-    //   this.httpOptions.headers.set(
-    //     'Authorization',
-    //     'Bearer ' + this.session.getToken()
-    //   );
+    this.httpOptions.headers =
+      this.httpOptions.headers.set(
+        'Authorization',
+        'Bearer ' + this.session.getToken()
+      );
 
     return this.http.post(finalUrl, body, this.httpOptions);
   }
@@ -67,7 +67,9 @@ export class RestApiService {
         'Bearer ' + this.session.getToken()
       );
 
-    return this.http.get(finalUrl, this.httpOptions);
+    return this.http.get(finalUrl, this.httpOptions).pipe(catchError(error => {
+      return of(error);
+    }));
   }
 
   delete(url: string, id: string): Observable<any> {

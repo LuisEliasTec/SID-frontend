@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class SessionService {
-  private tokenName = 'nk';
+  private tokenName = 'kr';
 
   constructor(private router: Router) { }
 
@@ -14,10 +14,14 @@ export class SessionService {
   logout(): void {
     localStorage.removeItem(this.tokenName);
 
-    this.router.navigate(['/login']);
+    this.router.navigate(['/sys/login']);
   }
 
   getToken(): string {
     return localStorage.getItem(this.tokenName);
+  }
+
+  isThereAnyToken(): boolean {
+    return localStorage.getItem(this.tokenName) ? true : false;
   }
 }
