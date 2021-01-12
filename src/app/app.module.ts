@@ -4,8 +4,8 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
-import { PermissionGuard } from './auth/guards/permission.guard';
 import { PermissionsModule } from './auth/permissions-service/permissions.module';
+import { LoginGuard } from './auth/guards/login.guard';
 
 const ROUTES: Routes = [
   {
@@ -14,37 +14,43 @@ const ROUTES: Routes = [
     children: [
       {
         path: 'modulo',
-        loadChildren: () => import('./modules/modules.module').then(m => m.ModulesModule),
+        loadChildren: () =>
+          import('./modules/modules.module').then((m) => m.ModulesModule),
       },
       {
         path: 'login',
-        canActivate: [PermissionGuard],
-        loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule),
+        canActivate: [LoginGuard],
+        loadChildren: () =>
+          import('./auth/login/login.module').then((m) => m.LoginModule),
       },
       {
         path: '**',
-        loadChildren: () => import('./modules/notfound/notfound.module').then(m => m.NotFoundModule),
+        loadChildren: () =>
+          import('./modules/notfound/notfound.module').then(
+            (m) => m.NotFoundModule
+          ),
       },
-    ]
+    ],
   },
   {
     path: '**',
-    loadChildren: () => import('./modules/notfound/notfound.module').then(m => m.NotFoundModule),
+    loadChildren: () =>
+      import('./modules/notfound/notfound.module').then(
+        (m) => m.NotFoundModule
+      ),
   },
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  providers: [PermissionGuard],
+  declarations: [AppComponent],
+  providers: [LoginGuard],
   imports: [
     BrowserModule,
     NgbModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
-    PermissionsModule
+    PermissionsModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

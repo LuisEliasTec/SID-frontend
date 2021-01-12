@@ -6,8 +6,8 @@ import { ToastService } from '../providers/toast-service/toast.service';
 import { MODULES_ROUTES } from './modules.routes';
 import { ModulesComponent } from './modules.component';
 import { PermissionGuard } from '../auth/guards/permission.guard';
-import { SessionModule } from '../providers/session/session.module';
 import { PermissionsModule } from '../auth/permissions-service/permissions.module';
+import { AppToastModule } from '../components/shared/app-toast/app-toast.module';
 
 @NgModule({
   declarations: [ModulesComponent],
@@ -16,6 +16,7 @@ import { PermissionsModule } from '../auth/permissions-service/permissions.modul
     SiteNavbarModule,
     SiteFooterModule,
     PermissionsModule,
+    AppToastModule,
   ],
   exports: [],
   providers: [ToastService, PermissionGuard],

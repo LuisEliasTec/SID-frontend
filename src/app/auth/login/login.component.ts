@@ -25,7 +25,7 @@ export class LoginComponent {
     private router: Router,
   ) {
     this.loginForm = fb.group({
-      email: fb.control('', [Validators.required]),
+      userName: fb.control('', [Validators.required]),
       password: fb.control('', Validators.required),
     });
   }
@@ -42,7 +42,7 @@ export class LoginComponent {
         this.sessionService.saveToken(res.accessToken);
         this.router.navigate(['sys', 'modulo', 'citas']);
       } else {
-        this.toastService.showSuccess('Error', 'Datos incorrectos');
+        this.toastService.showToast('Error', 'Datos incorrectos', true);
       }
     });
   }

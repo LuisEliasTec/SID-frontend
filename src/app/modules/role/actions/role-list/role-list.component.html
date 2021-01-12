@@ -12,33 +12,16 @@
   </div>
 
   <mat-selection-list [multiple]="false">
-    <mat-list-option>
-      <div class="list-option-content d-flex justify-space-between">
-        <span class="col-sm-3 col-md-3 col-lg-3 col-xl-3">1</span>
-        <span class="col-sm-9 col-md-9 col-lg-9 col-xl-9 d-flex justify-content-center">Pepper</span>
-      </div>
-    </mat-list-option>
 
-    <mat-list-option>
-      <div class="list-option-content d-flex justify-space-between">
-        <span class="col-sm-3 col-md-3 col-lg-3 col-xl-3">2</span>
-        <span class="col-sm-9 col-md-9 col-lg-9 col-xl-9 d-flex justify-content-center">Pepper</span>
-      </div>
-    </mat-list-option>
+    <ng-container *ngFor="let item of roleList; let i = index">
+      <mat-list-option [selected]="i === 0" (click)="changed(item)">
+        <div class="list-option-content d-flex justify-space-between">
+          <span class="col-sm-3 col-md-3 col-lg-3 col-xl-3">{{ i }}</span>
 
-    <mat-list-option>
-      <div class="list-option-content d-flex justify-space-between">
-        <span class="col-sm-3 col-md-3 col-lg-3 col-xl-3">3</span>
-        
-        <span class="col-sm-9 col-md-9 col-lg-9 col-xl-9 d-flex justify-content-center">Pepper</span>
-      </div>
-    </mat-list-option>
+          <span class="col-sm-9 col-md-9 col-lg-9 col-xl-9 d-flex justify-content-center">{{ item.name }}</span>
+        </div>
+      </mat-list-option>
+    </ng-container>
 
-    <mat-list-option>
-      <div class="list-option-content d-flex justify-space-between">
-        <span class="col-sm-3 col-md-3 col-lg-3 col-xl-3">4</span>
-        <span class="col-sm-9 col-md-9 col-lg-9 col-xl-9 d-flex justify-content-center">Pepper</span>
-      </div>
-    </mat-list-option>
   </mat-selection-list>
 </div>

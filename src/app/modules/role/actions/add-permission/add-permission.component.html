@@ -1,0 +1,42 @@
+<app-dialog-header
+  (closeDialogEvent)="closeDialog($event)"
+  [subtitle]="'Elige los permisos para asignar'"
+  [title]="'Asignar permisos'"
+>
+</app-dialog-header>
+
+<form [formGroup]="formGroup" class="container-fluid" (ngSubmit)="onSubmit()">
+  <div class="row" formArrayName="permissions">
+    <div
+      *ngFor="let permission of permissionList$ | async; let i = index"
+      class="col-sm-12 col-md-6 col-lg-6 col-xl-6"
+    >
+      <div class="card-sys">
+        <div class="radio-section">
+          <mat-checkbox
+            [formControlName]="i"
+            (change)="changedValue(i, permission, $event)"
+            [color]="'primary'"
+          ></mat-checkbox>
+        </div>
+
+        <div class="text-section">
+          <div class="card-sys-title">
+            {{ permission.name }}
+          </div>
+
+          <div class="card-sys-body">
+            {{ permission.slug }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row dialog-actions">
+    <button type="button" (click)="closeDialog('CLOSED')" class="btn-base btn-secondary-dialog">
+      Cancelar
+    </button>
+    <button type="submit" class="btn-base btn-primary-dialog">Guardar</button>
+  </div>
+</form>

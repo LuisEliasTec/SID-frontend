@@ -5,14 +5,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule, Routes } from '@angular/router';
+import { UpdateRoleEntryDialogComponent } from './update-role-entry-dialog.component';
+import { UpdateRoleComponent } from './update-role.component';
 import { DialogHeaderModule } from 'src/app/components/layout/dialog-header/dialog-header.module';
-import { CreateRoleEntryDialogComponent } from './create-role-entry-dialog.component';
-import { CreateRoleComponent } from './create-role.component';
 
 const ROUTES: Routes = [
   {
-    path: '',
-    component: CreateRoleEntryDialogComponent,
+    path: ':roleId',
+    component: UpdateRoleEntryDialogComponent,
   },
   {
     path: '**',
@@ -21,7 +21,7 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [CreateRoleComponent, CreateRoleEntryDialogComponent],
+  declarations: [UpdateRoleComponent, UpdateRoleEntryDialogComponent],
   imports: [
     MatDialogModule,
     RouterModule.forChild(ROUTES),
