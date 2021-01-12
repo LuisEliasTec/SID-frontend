@@ -40,16 +40,28 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="col-sm-12 col-md-3 col-lg-3 col-xl-3" appearance="standard">
-        <mat-label>Elige una opción</mat-label>
-        <mat-select formControlName="status">
-          <mat-option value="ACTIVE">Activo</mat-option>
-          <mat-option value="INNACTIVE">Inactivo</mat-option>
-        </mat-select>
-        <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('confirmPassword'))">
-          {{tValidation.checkForErrors(createFormGroup.get('confirmPassword'))}}
+      <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3" appearance="standard">
+        <ng-select 
+          [placeholder]="'Elige un estatus'" 
+          formControlName="status" 
+          [items]="selectOptions" 
+          bindLabel="name" bindValue="value">
+        </ng-select>
+
+        <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('status'))">
+          {{tValidation.checkForErrors(createFormGroup.get('status'))}}
         </mat-error>
-      </mat-form-field>
+      </div>
+
+      <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+        <app-roles-select [setPlaceHolder]="'Selecciona un rol'" 
+          (selectedValue)="createFormGroup.get('role').setValue($event?._id)">
+        </app-roles-select>
+
+        <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('role'))">
+          {{tValidation.checkForErrors(createFormGroup.get('role'))}}
+        </mat-error>
+      </div>
     </div>
 
     <div class="row dialog-actions">

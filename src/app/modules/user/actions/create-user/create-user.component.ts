@@ -19,6 +19,10 @@ import { ValidationTriggerService } from 'src/app/providers/validation-trigger.s
 })
 export class CreateUserComponent {
   public createFormGroup: FormGroup;
+  public selectOptions = [
+    { name: 'Activo', value: 'ACTIVE' },
+    { name: 'Inactivo', value: 'INNACTIVE' },
+  ];
 
   constructor(
     private fb: FormBuilder,
@@ -37,7 +41,8 @@ export class CreateUserComponent {
         RxwebValidators.compare({ fieldName: 'password' }),
         Validators.required,
       ]),
-      status: fb.control('', [Validators.required]),
+      status: fb.control(null, [Validators.required]),
+      role: fb.control(null, [Validators.required]),
     });
 
     this.breakpointObserver
@@ -69,8 +74,7 @@ export class CreateUserComponent {
           this.dataExchange.sendValue({ created: true });
           this.toastService.showToast(
             'Éxito',
-            'Acción realizada correctamente',
-            true
+            'Acción realizada correctamente'
           );
           this.dialogRef.close(res);
         } else {
