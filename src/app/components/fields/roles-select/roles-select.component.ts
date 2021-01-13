@@ -13,12 +13,14 @@ import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
       bindValue="_id"
       (change)="sendValue($event)"
       [placeholder]="setPlaceHolder"
+      [(ngModel)]="ngSelectValue"
     >
     </ng-select>
   `,
 })
 export class RolesSelectComponent {
   public roles$: Observable<any[]>;
+  @Input() ngSelectValue: string;
   @Input() setPlaceHolder: string;
   @Output() selectedValue = new EventEmitter<any>();
 

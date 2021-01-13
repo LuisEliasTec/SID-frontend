@@ -2,8 +2,7 @@
 <div class="login-container">
   <div class="container-fluid">
     <img src="/assets/logo.png" alt="login-image" class="login-image">
-    <mat-tab-group mat-align-tabs="start">
-      <mat-tab label="Usuario">
+  
         <form [formGroup]="loginForm" class="login-form container-fluid" (ngSubmit)="onSubmit()">
 
           <div class="row">
@@ -29,9 +28,6 @@
             <button type="submit" class="btn-base btn-primary-dialog w-100">Guardar</button>
           </div>
         </form>
-      </mat-tab>
 
-      <mat-tab label="Código">Código</mat-tab>
-    </mat-tab-group>
   </div>
 </div>
