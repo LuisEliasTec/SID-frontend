@@ -8,16 +8,29 @@
   <form [formGroup]="updateFormGroup" class="container-fluid" (ngSubmit)="onSubmit()">
 
     <div class="row">
-      <mat-form-field class="col-sm-12 col-md-6 col-lg-6 col-xl-6" appearance="standard">
-        <mat-label>Elige una opción</mat-label>
-        <mat-select formControlName="status">
-          <mat-option value="ACTIVE">Activo</mat-option>
-          <mat-option value="INNACTIVE">Inactivo</mat-option>
-        </mat-select>
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6" appearance="standard">
+        <ng-select 
+          [placeholder]="'Elige un estatus'" 
+          formControlName="status" 
+          [items]="selectOptions" 
+          bindLabel="name" bindValue="value">
+        </ng-select>
         <mat-error *ngIf="tValidation.checkForErrors(updateFormGroup.get('status'))">
           {{tValidation.checkForErrors(updateFormGroup.get('status'))}}
         </mat-error>
-      </mat-form-field>
+      </div>
+
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <app-roles-select [setPlaceHolder]="'Selecciona un rol'" 
+          (selectedValue)="updateFormGroup.get('role').setValue($event?._id)"
+          [ngSelectValue]="updateFormGroup.get('role').value"
+          >
+        </app-roles-select>
+
+        <mat-error *ngIf="tValidation.checkForErrors(updateFormGroup.get('role'))">
+          {{tValidation.checkForErrors(updateFormGroup.get('role'))}}
+        </mat-error>
+      </div>
     </div>
 
     <div class="row dialog-actions">

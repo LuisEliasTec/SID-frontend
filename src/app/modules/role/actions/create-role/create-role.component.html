@@ -1,1 +1,29 @@
-<h2>modal role create</h2>
+<app-dialog-header (closeDialogEvent)="closeDialog($event)" [subtitle]="'Formulario para la creación de un nuevo rol'"
+  [title]="'Crear rol'">
+</app-dialog-header>
+
+<form [formGroup]="createFormGroup" class="container-fluid" (ngSubmit)="onSubmit()">
+
+  <div class="row">
+    <mat-form-field class="col-sm-12 col-md-6 col-lg-6 col-xl-12" appearance="standard">
+      <mat-label>Nombre del rol</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('name'))">
+        {{tValidation.checkForErrors(createFormGroup.get('name'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-sm-12 col-md-6 col-lg-6 col-xl-12" appearance="standard">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description" placeholder="Descripción"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(createFormGroup.get('description'))">
+        {{tValidation.checkForErrors(createFormGroup.get('description'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row dialog-actions">
+    <button type="button" class="btn-base btn-secondary-dialog" (click)="onCancelButton()">Cancelar</button>
+    <button type="submit" class="btn-base btn-primary-dialog">Guardar</button>
+  </div>
+</form>

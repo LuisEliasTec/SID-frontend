@@ -4,11 +4,19 @@ import { Injectable } from '@angular/core';
 export class ToastService {
   toasts: any[] = [];
 
-  showSuccess(header?: string, body?: string): void {
-    this.toasts.push({ header, body });
+  /**
+   * @deprecated This function will be deleted on the near future.
+   * Use ShowToast()
+   */
+  showSuccess(header?: string, body?: string, error = false): void {
+    this.toasts.push({ header, body, error });
+  }
+
+  showToast(header?: string, body?: string, error = false): void {
+    this.toasts.push({ header, body, error });
   }
 
   remove(toast): void {
-    this.toasts = this.toasts.filter(t => t !== toast);
+    this.toasts = this.toasts.filter((t) => t !== toast);
   }
 }

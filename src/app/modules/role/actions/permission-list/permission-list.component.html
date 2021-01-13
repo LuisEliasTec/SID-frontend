@@ -1,13 +1,19 @@
-<div class="permission-list-container row">
+<div
+  class="permission-list-container row"
+  *ngIf="isThereAnyRole$ | async; else noRoles"
+>
   <div class="module-button-container col-sm-12 col-md-4 col-lg-4 col-xl-4">
     <mat-icon>create</mat-icon>
 
     <h4 class="module-button-title">CRM</h4>
 
-    <button class="module-button button-crm">
-    </button>
+    <button
+      type="button"
+      (click)="assignPermissions('crm')"
+      class="module-button button-crm"
+    ></button>
 
-    <mat-checkbox class="module-checkbox"> </mat-checkbox>
+    <!-- <mat-checkbox class="module-checkbox"> </mat-checkbox> -->
   </div>
 
   <div class="module-button-container col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -15,10 +21,13 @@
 
     <h4 class="module-button-title">ERP</h4>
 
-    <button class="module-button button-crm">
-    </button>
+    <button
+      type="button"
+      (click)="assignPermissions('erp')"
+      class="module-button button-crm"
+    ></button>
 
-    <mat-checkbox class="module-checkbox"> </mat-checkbox>
+    <!-- <mat-checkbox class="module-checkbox"> </mat-checkbox> -->
   </div>
 
   <div class="module-button-container col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -26,10 +35,13 @@
 
     <h4 class="module-button-title">Pacientes</h4>
 
-    <button class="module-button button-crm">
-    </button>
+    <button
+      type="button"
+      (click)="assignPermissions('patient')"
+      class="module-button button-crm"
+    ></button>
 
-    <mat-checkbox class="module-checkbox"> </mat-checkbox>
+    <!-- <mat-checkbox class="module-checkbox"> </mat-checkbox> -->
   </div>
 
   <div class="module-button-container col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -37,10 +49,13 @@
 
     <h4 class="module-button-title">Citas</h4>
 
-    <button class="module-button button-crm">
-    </button>
+    <button
+      type="button"
+      (click)="assignPermissions('appointments')"
+      class="module-button button-crm"
+    ></button>
 
-    <mat-checkbox class="module-checkbox"> </mat-checkbox>
+    <!-- <mat-checkbox class="module-checkbox"> </mat-checkbox> -->
   </div>
 
   <div class="module-button-container col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -48,9 +63,48 @@
 
     <h4 class="module-button-title">Usuarios</h4>
 
-    <button class="module-button button-crm">
-    </button>
+    <button
+      type="button"
+      (click)="assignPermissions('users')"
+      class="module-button button-crm"
+    ></button>
 
-    <mat-checkbox class="module-checkbox"> </mat-checkbox>
+    <!-- <mat-checkbox class="module-checkbox"> </mat-checkbox> -->
+  </div>
+  
+  <div class="module-button-container col-sm-12 col-md-4 col-lg-4 col-xl-4">
+    <mat-icon>assignment_ind</mat-icon>
+
+    <h4 class="module-button-title">Empleados</h4>
+
+    <button
+      type="button"
+      (click)="assignPermissions('employees')"
+      class="module-button button-crm"
+    ></button>
+
+    <!-- <mat-checkbox class="module-checkbox"> </mat-checkbox> -->
+  </div>
+
+  <div class="module-button-container col-sm-12 col-md-4 col-lg-4 col-xl-4">
+    <mat-icon>people</mat-icon>
+
+    <h4 class="module-button-title">Roles</h4>
+
+    <button
+      type="button"
+      (click)="assignPermissions('roles')"
+      class="module-button button-users"
+    ></button>
+
+    <!-- <mat-checkbox class="module-checkbox"> </mat-checkbox> -->
   </div>
 </div>
+
+<ng-template #noRoles>
+  <div class="permission-list-container row text-center p-5">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <h2>No hay roles</h2>
+    </div>
+  </div>
+</ng-template>

@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
 import { CreateUserComponent } from './create-user.component';
 import { MatSelectModule } from '@angular/material/select';
 import { DialogHeaderModule } from 'src/app/components/layout/dialog-header/dialog-header.module';
+import { RolesSelectModule } from 'src/app/components/fields/roles-select/roles-select.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const routes: Routes = [
   {
@@ -31,6 +33,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatSelectModule,
     DialogHeaderModule,
+    RolesSelectModule,
+    NgSelectModule,
   ],
   exports: [CreateUserComponent],
   providers: []

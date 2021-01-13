@@ -2,16 +2,15 @@
 <div class="login-container">
   <div class="container-fluid">
     <img src="/assets/logo.png" alt="login-image" class="login-image">
-    <mat-tab-group mat-align-tabs="start">
-      <mat-tab label="Usuario">
+  
         <form [formGroup]="loginForm" class="login-form container-fluid" (ngSubmit)="onSubmit()">
 
           <div class="row">
             <mat-form-field class="col-sm-12 col-md-12 col-lg-12 col-xl-12" appearance="standard">
               <mat-label>Nombre de usuario</mat-label>
-              <input type="text" matInput formControlName="email">
-              <mat-error *ngIf="tValidation.checkForErrors(loginForm.get('email'))">
-                {{tValidation.checkForErrors(loginForm.get('email'))}}
+              <input type="text" matInput formControlName="userName">
+              <mat-error *ngIf="tValidation.checkForErrors(loginForm.get('userName'))">
+                {{tValidation.checkForErrors(loginForm.get('userName'))}}
               </mat-error>
             </mat-form-field>
       
@@ -29,9 +28,6 @@
             <button type="submit" class="btn-base btn-primary-dialog w-100">Guardar</button>
           </div>
         </form>
-      </mat-tab>
 
-      <mat-tab label="Código">Código</mat-tab>
-    </mat-tab-group>
   </div>
 </div>
