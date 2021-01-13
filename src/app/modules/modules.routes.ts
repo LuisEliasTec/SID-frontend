@@ -14,7 +14,15 @@ export const MODULES_ROUTES: Routes = [
       },
       {
         path: 'empleados',
+        canActivate: [PermissionGuard],
+        data: {
+          permissions: [Permissions.READ_EMPLOYEE],
+        },
         loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule),
+      },
+      {
+        path: 'expedientes-clinicos',
+        loadChildren: () => import('./medical-record/medical-record.module').then(m => m.MedicalRecordModule),
       },
       {
         path: 'puestos-laborales',

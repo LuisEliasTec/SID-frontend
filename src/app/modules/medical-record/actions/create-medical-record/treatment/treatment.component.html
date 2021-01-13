@@ -1,0 +1,24 @@
+<div [formGroup]="treatmentFormGroup" class="form-group">
+
+  <h3>Tratamiento</h3>
+  <!-- <h4>Cirugía adecuada</h4> -->
+
+  <div class="row">
+    <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>Cirugía adecuada</mat-label>
+      <input type="text" matInput formControlName="suggestedSurgery">
+      <mat-error *ngIf="tValidation.checkForErrors(treatmentFormGroup.get('suggestedSurgery'))">
+        {{tValidation.checkForErrors(treatmentFormGroup.get('suggestedSurgery'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-8" appearance="standard">
+      <mat-label>Plan de seguimiento</mat-label>
+      <textarea matInput formControlName="monitoringPlan"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(treatmentFormGroup.get('monitoringPlan'))">
+        {{tValidation.checkForErrors(treatmentFormGroup.get('monitoringPlan'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+</div>

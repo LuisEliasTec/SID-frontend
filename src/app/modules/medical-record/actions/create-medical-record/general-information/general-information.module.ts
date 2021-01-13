@@ -1,32 +1,26 @@
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RestApiModule } from 'src/app/providers/rest-api/rest-api.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
+import { DialogHeaderModule } from 'src/app/components/layout/dialog-header/dialog-header.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
-import { DialogHeaderModule } from 'src/app/components/layout/dialog-header/dialog-header.module';
-import { CreateTurnEntryDialogComponent } from './create-turn-entry-dialog.component';
-import { CreateTurnComponent } from './create-turn.component';
-import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormatTimePickerService } from 'src/app/services/format-time-picker.service';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: CreateTurnEntryDialogComponent,
-  }
-];
+import { NgSelectModule } from '@ng-select/ng-select';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { GeneralInformationComponent } from './general-information.component';
 
 @NgModule({
-  declarations: [CreateTurnEntryDialogComponent, CreateTurnComponent],
+  declarations: [GeneralInformationComponent],
   imports: [
-    RouterModule.forChild(routes),
+    // RouterModule.forChild(routes),
     MatDialogModule,
     ReactiveFormsModule,
     RestApiModule,
@@ -34,13 +28,16 @@ const routes: Routes = [
     MatInputModule,
     CommonModule,
     MatSelectModule,
+    DialogHeaderModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
-    DialogHeaderModule,
-    NgbTimepickerModule,
-    FormsModule,  ],
-  exports: [CreateTurnComponent],
-  providers: [FormatTimePickerService]
+    NgSelectModule,
+    MatTabsModule,
+    MatDividerModule,
+    MatCheckboxModule
+  ],
+  exports: [GeneralInformationComponent],
+  providers: []
 })
-export class CreateTurnEntryDialogModule { }
+export class GeneralInformationModule { }

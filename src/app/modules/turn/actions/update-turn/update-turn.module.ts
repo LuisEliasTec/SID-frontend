@@ -15,7 +15,7 @@ import { DialogHeaderModule } from 'src/app/components/layout/dialog-header/dial
 import { UpdateTurnEntryDialogComponent } from './update-turn-entry-dialog.component';
 import { UpdateTurnComponent } from './update-turn.component';
 import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormatTimePickerService } from 'src/app/providers/services/format-time-picker.service';
+import { FormatTimePickerService } from 'src/app/services/format-time-picker.service';
 
 const routes: Routes = [
   {

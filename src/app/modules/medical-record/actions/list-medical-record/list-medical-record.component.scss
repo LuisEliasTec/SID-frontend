@@ -1,0 +1,117 @@
+table#list-users {
+  width: 100%;
+}
+
+.user-list-container {
+  max-width: 1316px;
+  margin: 30px auto 70px;
+
+  .scroll-container.row {
+    max-height: 800px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      background: transparent;
+    }
+
+    >div {
+      margin-bottom: 30px;
+    }
+  }
+
+  .card {
+    padding: 57px 0 0 0;
+    border-radius: 10px;
+    box-shadow: 0px 6px 20px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+    border: none;
+    height: 400px;
+
+    >div+div {
+      margin-top: 40px;
+    }
+
+    .rounded-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      height: 150px;
+
+      .image-border {
+        width: 150px;
+        height: 150px;
+        background-color: #f0faf8;
+        position: absolute;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .patient-image {
+          width: 120px;
+          height: 120px;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    .user-description {
+      text-align: center;
+
+      .user-card-title {
+        font-size: 18px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #646d82;
+      }
+
+      .user-body {
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.71;
+        letter-spacing: normal;
+        color: #a6b1c2;
+      }
+    }
+
+    .user-actions {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: flex;
+
+      .show-more {
+        border-bottom-left-radius: 10px;
+        border-bottom: none;
+        border-left: none;
+      }
+
+      .delete-user {
+        border-bottom-right-radius: 10px;
+        border-bottom: none;
+        border-right: none;
+      }
+    }
+
+    button {
+      flex: 0 0 50%;
+      max-width: 50%;
+      border: solid 0.5px #dbede9;
+      background-color: transparent;
+      padding: 13px 0;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.6;
+      letter-spacing: normal;
+      color: #646d82;
+    }
+  }
+}

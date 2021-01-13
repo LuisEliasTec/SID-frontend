@@ -1,0 +1,40 @@
+<app-dialog-header [subtitle]="'Expediente clínico de customerName'" [title]="titleDialog">
+</app-dialog-header>
+<mat-dialog-content>
+  <div *ngIf="isIdIn">
+    <mat-tab-group mat-align-tabs="start">
+      <mat-tab label="Información general">
+        <app-general-information [actionSaveInput]="actionSave"
+          (patientformGroupOutput)="patientFormGroupOutput($event)"></app-general-information>
+      </mat-tab>
+      <mat-tab label="Antecedentes">
+        <app-records [actionSaveInput]="actionSave" (recordsformGroupOutput)="recordsFormGroupOutput($event)">
+        </app-records>
+      </mat-tab>
+      <mat-tab label="Historia de ingreso">
+        <app-admission-history [actionSaveInput]="actionSave"
+          (admissionHistoryformGroupOutput)="admissionHistoryformGroupOutput($event)"></app-admission-history>
+      </mat-tab>
+      <mat-tab label="Documentos">Content 3</mat-tab>
+      <mat-tab label="Fotografías">Content 3</mat-tab>
+      <mat-tab label="Tratamiento">
+        <app-treatment [actionSaveInput]="actionSave" (treatmentformGroupOutput)="treatmentformGroupOutput($event)">
+        </app-treatment>
+      </mat-tab>
+      <mat-tab label="Evolución">
+        <app-evolution [actionSaveInput]="actionSave" (evolutionformGroupOutput)="evolutionformGroupOutput($event)">
+        </app-evolution>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <label for="">Acciones relacionadas</label>
+  <hr>
+
+  <button class="btn-base btn-secondary-dialog" (click)="onNoClick()">Cancelar</button>
+  <button type="button" class="btn-base btn-primary-dialog" (click)="onSubmit()">Guardar</button>
+  <button type="button" class="btn-base btn-primary-dialog" (click)="inputTest()">Input</button>
+</mat-dialog-actions>

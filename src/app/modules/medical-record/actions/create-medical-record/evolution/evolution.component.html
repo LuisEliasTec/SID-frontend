@@ -1,0 +1,30 @@
+<div [formGroup]="evolutionFormGroup" class="form-group">
+  <h3>Evolución</h3>
+  <!-- <h4>Cirugía adecuada</h4> -->
+
+  <div class="row">
+    <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>Fecha</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="appointmentDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="tValidation.checkForErrors(evolutionFormGroup.get('appointmentDate'))">
+        {{tValidation.checkForErrors(evolutionFormGroup.get('appointmentDate'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <div class="col-lg-4">
+      <label for="">Hora</label>
+      <ngb-timepicker [meridian]="meridian" formControlName="appointmentHour"></ngb-timepicker>
+    </div>
+
+    <mat-form-field class="col-lg-12" appearance="standard">
+      <mat-label>Observaciones</mat-label>
+      <textarea matInput formControlName="observations"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(evolutionFormGroup.get('observations'))">
+        {{tValidation.checkForErrors(evolutionFormGroup.get('observations'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+</div>

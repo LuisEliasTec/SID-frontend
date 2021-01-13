@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogDataExchange } from 'src/app/providers/dialog-data-exchange/dialog-data-exchange.service';
 import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
-import { FormatTimePickerService } from 'src/app/providers/services/format-time-picker.service';
+import { FormatTimePickerService } from 'src/app/services/format-time-picker.service';
 import { ValidationTriggerService } from 'src/app/providers/validation-trigger.service';
 
 @Component({

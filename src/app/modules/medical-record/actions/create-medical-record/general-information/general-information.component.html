@@ -1,0 +1,251 @@
+<div [formGroup]="patientFormGroup" class="form-group">
+
+  <h3>Información general</h3>
+
+  <div class="row">
+    <div class="col-lg-3 text-center">
+      <div class="rounded-image">
+        <div class="image-border">
+          <img class="patient-image" src="../../../../assets/patient05@2x.png" alt="">
+        </div>
+      </div>
+      <label>customerName</label>
+    </div>
+
+    <div class="col-lg-9">
+      <div class="row">
+        <mat-form-field class="col-lg-4" appearance="standard">
+          <mat-label>Nombre *</mat-label>
+          <input type="text" matInput formControlName="name">
+          <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('name'))">
+            {{tValidation.checkForErrors(patientFormGroup.get('name'))}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-4" appearance="standard">
+          <mat-label>Apellido paterno *</mat-label>
+          <input type="text" matInput formControlName="firstName">
+          <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('firstName'))">
+            {{tValidation.checkForErrors(patientFormGroup.get('firstName'))}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-4" appearance="standard">
+          <mat-label>Apellido materno *</mat-label>
+          <input type="text" matInput formControlName="secondName">
+          <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('secondName'))">
+            {{tValidation.checkForErrors(patientFormGroup.get('secondName'))}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-4" appearance="standard">
+          <mat-label>Fecha de nacimiento *</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="birthDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('birthDate'))">
+            {{tValidation.checkForErrors(patientFormGroup.get('birthDate'))}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-4" appearance="standard">
+          <mat-label>Teléfono *</mat-label>
+          <input type="tel" matInput placeholder="311-5557-1234" formControlName="phoneNumber">
+          <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('phoneNumber'))">
+            {{tValidation.checkForErrors(patientFormGroup.get('phoneNumber'))}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-4" appearance="standard">
+          <mat-label>Teléfono opcional</mat-label>
+          <input type="tel" matInput placeholder="311-5557-1234" formControlName="optionalPhoneNumber">
+          <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('optionalPhoneNumber'))">
+            {{tValidation.checkForErrors(patientFormGroup.get('optionalPhoneNumber'))}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-4" appearance="standard">
+          <mat-label>Correo Electrónico *</mat-label>
+          <input type="email" matInput formControlName="email">
+          <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('email'))">
+            {{tValidation.checkForErrors(patientFormGroup.get('email'))}}
+          </mat-error>
+        </mat-form-field>
+
+        <div formGroupName="address">
+          <mat-form-field class="col-lg-8" appearance="standard">
+            <mat-label>Calle</mat-label>
+            <textarea matInput placeholder="Ex. 100 Main St" formControlName="street">1600 Amphitheatre Pkwy</textarea>
+          </mat-form-field>
+
+          <mat-form-field class="col-lg-4" appearance="standard">
+            <mat-label>Número exterior *</mat-label>
+            <input type="number" matInput placeholder="" formControlName="exteriorNumber">
+            <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('address.exteriorNumber'))">
+              {{tValidation.checkForErrors(patientFormGroup.get('address.exteriorNumber'))}}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="col-lg-4" appearance="standard">
+            <mat-label>Número interior *</mat-label>
+            <input type="number" matInput placeholder="" formControlName="interiorNumber">
+            <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('address.interiorNumber'))">
+              {{tValidation.checkForErrors(patientFormGroup.get('address.interiorNumber'))}}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="col-lg-4" appearance="standard">
+            <mat-label>Colonia</mat-label>
+            <input matInput placeholder="Ex. San Francisco" formControlName="neighborhood">
+          </mat-form-field>
+
+          <mat-form-field class="col-lg-4" appearance="standard">
+            <mat-label>Ciudad</mat-label>
+            <input matInput placeholder="Ex. San Francisco" formControlName="city">
+          </mat-form-field>
+
+          <mat-form-field class="col-lg-4" appearance="standard">
+            <mat-label>Estado</mat-label>
+            <input matInput placeholder="Ex. San Francisco" formControlName="state">
+          </mat-form-field>
+
+          <mat-form-field class="col-lg-4" appearance="standard">
+            <mat-label>País</mat-label>
+            <input matInput placeholder="Ex. San Francisco" formControlName="country">
+          </mat-form-field>
+
+          <mat-form-field class="col-lg-4" appearance="standard">
+            <mat-label>Código Postal</mat-label>
+            <input matInput #zipCode maxlength="5" placeholder="Ex. 94105" value="94043" formControlName="zipCode">
+            <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="col-lg-4" appearance="standard">
+          <mat-label>C.U.R.P.</mat-label>
+          <input matInput placeholder="Ex. San Francisco" formControlName="curp">
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-4" appearance="standard">
+          <mat-label>R.F.C.</mat-label>
+          <input matInput placeholder="Ex. San Francisco" formControlName="rfc">
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-4" appearance="standard">
+          <mat-label>Seleccione un estatus *</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="ACTIVE">Activo</mat-option>
+            <mat-option value="INNACTIVE">Inactivo</mat-option>
+          </mat-select>
+          <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('status'))">
+            {{tValidation.checkForErrors(patientFormGroup.get('status'))}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <h3>Datos fiscales</h3>
+
+  <div class="row" formGroupName="taxInformation">
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Nombre/Razón social *</mat-label>
+      <input type="text" matInput formControlName="businessName">
+      <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('taxInformation.businessName'))">
+        {{tValidation.checkForErrors(patientFormGroup.get('taxInformation.businessName'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-3" appearance="standard">
+      <mat-label>R.F.C. *</mat-label>
+      <input type="text" matInput formControlName="rfc">
+      <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('taxInformation.rfc'))">
+        {{tValidation.checkForErrors(patientFormGroup.get('taxInformation.rfc'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-3" appearance="standard">
+      <mat-label>CURP *</mat-label>
+      <input type="text" matInput formControlName="curp">
+      <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('taxInformation.curp'))">
+        {{tValidation.checkForErrors(patientFormGroup.get('taxInformation.curp'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-8" appearance="standard">
+      <mat-label>Domicilio *</mat-label>
+      <input type="text" matInput formControlName="street">
+      <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('taxInformation.street'))">
+        {{tValidation.checkForErrors(patientFormGroup.get('taxInformation.street'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-2" appearance="standard">
+      <mat-label>Número externo *</mat-label>
+      <input type="number" matInput formControlName="exteriorNumber">
+      <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('taxInformation.exteriorNumber'))">
+        {{tValidation.checkForErrors(patientFormGroup.get('taxInformation.exteriorNumber'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-2" appearance="standard">
+      <mat-label>Número interno *</mat-label>
+      <input type="number" matInput formControlName="interiorNumber">
+      <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('taxInformation.interiorNumber'))">
+        {{tValidation.checkForErrors(patientFormGroup.get('taxInformation.interiorNumber'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-2" appearance="standard">
+      <mat-label>Código Postal</mat-label>
+      <input matInput #zipCode maxlength="5" placeholder="Ejemplo: 94105" value="94043" formControlName="zipCode">
+      <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+      <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('taxInformation.zipCode'))">
+        {{tValidation.checkForErrors(patientFormGroup.get('taxInformation.zipCode'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>Colonia *</mat-label>
+      <input type="text" matInput formControlName="neighborhood">
+      <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('taxInformation.neighborhood'))">
+        {{tValidation.checkForErrors(patientFormGroup.get('taxInformation.neighborhood'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>Localidad</mat-label>
+      <input type="text" matInput formControlName="location">
+      <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('taxInformation.location'))">
+        {{tValidation.checkForErrors(patientFormGroup.get('taxInformation.location'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>Ciudad</mat-label>
+      <input type="text" matInput formControlName="city">
+      <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('taxInformation.city'))">
+        {{tValidation.checkForErrors(patientFormGroup.get('taxInformation.city'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>Estado</mat-label>
+      <input type="text" matInput formControlName="state">
+      <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('taxInformation.state'))">
+        {{tValidation.checkForErrors(patientFormGroup.get('taxInformation.state'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>País</mat-label>
+      <input type="text" matInput formControlName="country">
+      <mat-error *ngIf="tValidation.checkForErrors(patientFormGroup.get('taxInformation.country'))">
+        {{tValidation.checkForErrors(patientFormGroup.get('taxInformation.country'))}}
+      </mat-error>
+    </mat-form-field>
+
+  </div>
+</div>

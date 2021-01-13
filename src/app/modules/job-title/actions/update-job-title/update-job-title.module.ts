@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DialogHeaderModule } from 'src/app/components/layout/dialog-header/dialog-header.module';
 import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormatTimePickerService } from 'src/app/providers/services/format-time-picker.service';
+import { FormatTimePickerService } from 'src/app/services/format-time-picker.service';
 import { UpdateJobTitleComponent } from './update-job-title.component';
 import { UpdateJobTitleEntryDialogComponent } from './update-job-title-entry-dialog.component';
 

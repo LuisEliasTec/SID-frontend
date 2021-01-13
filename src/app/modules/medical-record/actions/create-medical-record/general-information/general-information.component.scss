@@ -1,0 +1,25 @@
+.rounded-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 220px;
+
+  .image-border {
+    width: 220px;
+    height: 220px;
+    background-color: #f0faf8;
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .patient-image {
+      width: 180px;
+      height: 180px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 50%;
+    }
+  }
+}
