@@ -18,11 +18,13 @@ export class RoleListComponent implements OnDestroy {
     private restApiService: RestApiService,
     private dataExchangeService: DialogDataExchange
   ) {
-    this.subscription = this.dataExchangeService.getMessage().subscribe((res) => {
-      if (res.updated || res.created) {
-        this.getRoles();
-      }
-    });
+    this.subscription = this.dataExchangeService
+      .getMessage()
+      .subscribe((res) => {
+        if (res.updated || res.created) {
+          this.getRoles();
+        }
+      });
 
     this.getRoles();
   }
@@ -34,16 +36,22 @@ export class RoleListComponent implements OnDestroy {
     this.selectedItem.emit(item);
   }
 
-  getRoles(): void {
-    this.restApiService.get('role/list').subscribe((res: IResponse) => {
-      this.roleList = res._data;
+  onKeyPressed(event: any): void {
+    this.getRoles(event.target.value);
+  }
 
-      if (res._data.length > 0) {
-        this.dataExchangeService.sendValue(true);
-        this.selectedItem.emit(res._data[0]);
-      } else {
-        this.dataExchangeService.sendValue(false);
-      }
-    });
+  getRoles(searchTerm?: string): void {
+    this.restApiService
+      .get('role/list', null, { searchTerm })
+      .subscribe((res: IResponse) => {
+        this.roleList = res._data;
+
+        if (res._data.length > 0) {
+          this.dataExchangeService.sendValue(true);
+          this.selectedItem.emit(res._data[0]);
+        } else {
+          this.dataExchangeService.sendValue(false);
+        }
+      });
   }
 }
