@@ -1,0 +1,13 @@
+table.mat-table {
+  background-color: white;
+  box-shadow: none;
+  border-collapse: separate;
+  border-spacing: 0 15px !important;
+  background-color: none;
+  width: 100%;
+
+  tbody > tr {
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    border-radius: 6px;
+  }
+}

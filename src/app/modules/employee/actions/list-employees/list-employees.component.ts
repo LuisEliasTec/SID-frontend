@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/ models/user.interface';
@@ -9,6 +9,7 @@ import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
   selector: 'app-list-employees',
   templateUrl: './list-employees.component.html',
   styleUrls: ['./list-employees.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ListEmployeesComponent implements OnDestroy {
   public dataSource: IUser[] = [];
