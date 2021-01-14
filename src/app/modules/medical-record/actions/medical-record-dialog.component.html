@@ -1,4 +1,4 @@
-<app-dialog-header [subtitle]="'Expediente clínico de customerName'" [title]="titleDialog">
+<app-dialog-header (closeDialogEvent)="closeDialog($event)" [subtitle]="'Expediente clínico de customerName'" [title]="titleDialog">
 </app-dialog-header>
 <mat-dialog-content>
   <div *ngIf="isIdIn">

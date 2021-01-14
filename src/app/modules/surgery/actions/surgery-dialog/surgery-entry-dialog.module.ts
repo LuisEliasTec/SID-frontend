@@ -11,18 +11,18 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogHeaderModule } from 'src/app/components/layout/dialog-header/dialog-header.module';
-import { CreateJobTitleComponent } from './create-job-title.component';
-import { CreateJobTitleEntryDialogComponent } from './create-job-title-entry-dialog.component';
+import { SurgeryEntryDialogComponent } from './surgery-entry-dialog.component';
+import { SurgeryDialogComponent } from './surgery-dialog.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CreateJobTitleEntryDialogComponent,
+    component: SurgeryEntryDialogComponent,
   }
 ];
 
 @NgModule({
-  declarations: [CreateJobTitleEntryDialogComponent, CreateJobTitleComponent],
+  declarations: [SurgeryEntryDialogComponent, SurgeryDialogComponent],
   imports: [
     RouterModule.forChild(routes),
     MatDialogModule,
@@ -38,7 +38,7 @@ const routes: Routes = [
     DialogHeaderModule,
     FormsModule,
   ],
-  exports: [CreateJobTitleComponent],
+  exports: [SurgeryDialogComponent],
   providers: []
 })
-export class CreateJobTitleEntryDialogModule { }
+export class SurgeryEntryDialogModule { }

@@ -11,18 +11,19 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogHeaderModule } from 'src/app/components/layout/dialog-header/dialog-header.module';
-import { CreateJobTitleComponent } from './create-job-title.component';
-import { CreateJobTitleEntryDialogComponent } from './create-job-title-entry-dialog.component';
+import { MedicineDialogComponent } from './medicine-dialog.component';
+import { MedicineEntryDialogComponent } from './medicine-entry-dialog.component';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: CreateJobTitleEntryDialogComponent,
+    component: MedicineEntryDialogComponent,
   }
 ];
 
 @NgModule({
-  declarations: [CreateJobTitleEntryDialogComponent, CreateJobTitleComponent],
+  declarations: [MedicineEntryDialogComponent, MedicineDialogComponent],
   imports: [
     RouterModule.forChild(routes),
     MatDialogModule,
@@ -38,7 +39,7 @@ const routes: Routes = [
     DialogHeaderModule,
     FormsModule,
   ],
-  exports: [CreateJobTitleComponent],
+  exports: [MedicineDialogComponent],
   providers: []
 })
-export class CreateJobTitleEntryDialogModule { }
+export class MedicineEntryDialogModule { }
