@@ -1,0 +1,17 @@
+<nav class="tool-bar">
+  <div class="tool-bar-container">
+    <div class="description-section">
+      <h3 class="text-primary">Puestos laborales</h3>
+      <span class="text-secondary">Todo sobre los puestos laborales</span>
+    </div>
+    <div class="action-section d-flex">
+      <button class="btn-base btn-tool-icon">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <button class="btn-base btn-tool" routerLink="nuevo-puesto-laboral" type="button">Nuevo puesto laboral</button>
+    </div>
+  </div>
+</nav>
+
+<app-list-job-titles></app-list-job-titles>
+<router-outlet></router-outlet>

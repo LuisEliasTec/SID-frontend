@@ -1,0 +1,44 @@
+<div class="user-list-container">
+  <div class="container-fluid">
+    <div class="scroll-container row">
+      <div *ngFor="let patient of dataSource.data" class="col-md-3 col-lg-3 col-xl-3">
+        <div class="card">
+          <div class="rounded-image">
+            <div class="image-border">
+              <img class="patient-image" src="../../../../assets/patient05@2x.png" alt="">
+            </div>
+          </div>
+
+          <div class="user-description">
+            <div class="user-card-title">{{ patient.name + ' ' + patient.firstName + ' ' + patient.secondName}} </div>
+
+            <div class="user-body d-flex justify-content-center">
+              {{ patient.email }}
+            </div>
+            <div class="user-body d-flex justify-content-center">
+              <span [ngClass]="{
+                  'user-status-border': patient.status === 'INNACTIVE',
+                  'user-status-border-active': patient.status === 'ACTIVE'
+                }">
+                {{ patient.status | userStatus }}
+              </span>
+            </div>
+
+          </div>
+
+          <div class="user-actions">
+            <button class="show-more" (click)="updateOne(patient)">Ver más</button>
+
+            <button class="delete-user" (click)="deleteOne(patient)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <mat-paginator *ngIf="dataSource.data && dataSource.data?.length > 0" [length]="dataSource.total"
+      [pageSize]="dataSource.pageSize" [pageSizeOptions]="[5, 10, 20, 30]"
+      (page)="getUsers($event.pageIndex, $event.pageSize)">
+    </mat-paginator>
+
+  </div>
+</div>

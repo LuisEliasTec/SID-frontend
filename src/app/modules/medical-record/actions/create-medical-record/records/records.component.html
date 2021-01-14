@@ -1,0 +1,270 @@
+<div [formGroup]="recordsFormGroup" class="form-group">
+
+  <h3>Antecedentes quirúrgicos</h3>
+  <h4>Cirugías realizadas</h4>
+
+  <div class="row" formGroupName="surgeryHistory">
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Cirugías</mat-label>
+      <input type="text" matInput formControlName="surgery">
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('surgeryHistory.surgery'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('surgeryHistory.surgery'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-3" appearance="standard">
+      <mat-label>Fecha de último procedimiento</mat-label>
+      <input matInput [matDatepicker]="pickerSurgery" formControlName="lastSurgeryDate">
+      <mat-datepicker-toggle matSuffix [for]="pickerSurgery"></mat-datepicker-toggle>
+      <mat-datepicker #pickerSurgery></mat-datepicker>
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('surgeryHistory.lastSurgeryDate'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('surgeryHistory.lastSurgeryDate'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Motivo de las cirugías</mat-label>
+      <textarea matInput formControlName="reason"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('surgeryHistory.reason'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('surgeryHistory.reason'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Descenlace</mat-label>
+      <textarea matInput formControlName="outcome"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('surgeryHistory.outcome'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('surgeryHistory.outcome'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-12" appearance="standard">
+      <mat-label>Observaciones</mat-label>
+      <textarea matInput formControlName="observations"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('surgeryHistory.observations'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('surgeryHistory.observations'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <h3>Antecedentes no quirúrgicos</h3>
+
+  <div class="row" formGroupName="nonSurgeryHistory">
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Vacunas/Inmunizaciones</mat-label>
+      <input type="text" matInput formControlName="vaccinations">
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('nonSurgeryHistory.vaccinations'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('nonSurgeryHistory.vaccinations'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Alergias</mat-label>
+      <input type="text" matInput formControlName="allergies">
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('nonSurgeryHistory.allergies'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('nonSurgeryHistory.allergies'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Medicamentos actuales</mat-label>
+      <input type="text" matInput formControlName="currentMedications">
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('nonSurgeryHistory.currentMedications'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('nonSurgeryHistory.currentMedications'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-9" appearance="standard">
+      <mat-label>Alimentación</mat-label>
+      <textarea matInput formControlName="nutrition"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('nonSurgeryHistory.nutrition'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('nonSurgeryHistory.nutrition'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <div class="col-lg-4">
+      <mat-label>Malos hábitos:</mat-label>
+      <section class="horizontal-section">
+        <mat-checkbox class="checkbox-horizontal-margin" formControlName="alcoholism">Alcoholismo</mat-checkbox>
+        <mat-checkbox class="checkbox-horizontal-margin" formControlName="smoking">Tabaquismo</mat-checkbox>
+        <mat-checkbox class="checkbox-horizontal-margin" formControlName="drugs">Drogas</mat-checkbox>
+      </section>
+    </div>
+
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Otros</mat-label>
+      <textarea matInput formControlName="otherBadHabits"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('nonSurgeryHistory.otherBadHabits'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('nonSurgeryHistory.otherBadHabits'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <div class="col-lg-12" formGroupName="physicalActivity">
+      <mat-label>Actividad física:</mat-label>
+      <!-- <section class="horizontal-section">
+        <mat-checkbox class="checkbox-horizontal-margin" formControlName="sedentary">Sedentaria</mat-checkbox>
+        <mat-checkbox class="checkbox-horizontal-margin" formControlName="activeIrregular">Irregular activo
+        </mat-checkbox>
+        <mat-checkbox class="checkbox-horizontal-margin" formControlName="activeRegular">Regular activo
+        </mat-checkbox>
+        <mat-checkbox class="checkbox-horizontal-margin" formControlName="active">Activo</mat-checkbox>
+      </section> -->
+
+      <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+        formControlName="options">
+        <mat-radio-button class="example-radio-button" value="sedentary">
+          Sedentaria
+        </mat-radio-button>
+        <mat-radio-button class="example-radio-button" value="activeIrregular">
+          Irregular activo
+        </mat-radio-button>
+        <mat-radio-button class="example-radio-button" value="activeRegular">
+          Regular activo
+        </mat-radio-button>
+        <mat-radio-button class="example-radio-button" value="active">
+          Activo
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <section class="horizontal-section col-lg-6">
+      <mat-checkbox class="checkbox-horizontal-margin" formControlName="bloodTransfusions">Transfusiones
+        sanguíneas</mat-checkbox>
+    </section>
+
+    <mat-form-field class="col-lg-12" appearance="standard">
+      <mat-label>Observaciones</mat-label>
+      <textarea matInput formControlName="observations"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('nonSurgeryHistory.observations'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('nonSurgeryHistory.observations'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row" [formGroup]="personalPathologicalHistoryFormGroup">
+    <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>Padecimiento</mat-label>
+      <input type="text" matInput formControlName="disease">
+      <mat-error *ngIf="tValidation.checkForErrors(personalPathologicalHistoryFormGroup.get('disease'))">
+        {{tValidation.checkForErrors(personalPathologicalHistoryFormGroup.get('disease'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-3" appearance="standard">
+      <mat-label>Inicio del padecimiento</mat-label>
+      <input matInput [matDatepicker]="startDate" formControlName="startDate">
+      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+      <mat-datepicker #startDate></mat-datepicker>
+      <mat-error *ngIf="tValidation.checkForErrors(personalPathologicalHistoryFormGroup.get('startDate'))">
+        {{tValidation.checkForErrors(personalPathologicalHistoryFormGroup.get('startDate'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-5" appearance="standard">
+      <mat-label>Tratamiento actual</mat-label>
+      <input type="text" matInput formControlName="currentTreatment">
+      <mat-error *ngIf="tValidation.checkForErrors(personalPathologicalHistoryFormGroup.get('currentTreatment'))">
+        {{tValidation.checkForErrors(personalPathologicalHistoryFormGroup.get('currentTreatment'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <div class="col-lg-12">
+      <label for="">TABLA</label>
+    </div>
+  </div>
+
+  <div class="row" formGroupName="personalPathologicalHistory">
+    <mat-form-field class="col-lg-12" appearance="standard">
+      <mat-label>Observaciones</mat-label>
+      <textarea matInput formControlName="observations"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('personalPathologicalHistory.observations'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('personalPathologicalHistory.observations'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <h3>Antecedentes gineco-obstétricos</h3>
+
+  <div class="row" formGroupName="obstetricGynecologicalHistory">
+    <div class="col-lg-6">
+      <!-- <mat-label>Actividad física:</mat-label> -->
+      <section class="horizontal-section">
+        <mat-checkbox class="checkbox-horizontal-margin" formControlName="monarch">Monarca</mat-checkbox>
+        <mat-checkbox class="checkbox-horizontal-margin" formControlName="menopause">Menopausia
+        </mat-checkbox>
+        <mat-checkbox class="checkbox-horizontal-margin" formControlName="dysmenorrhea">Dismenorrea
+        </mat-checkbox>
+        <mat-checkbox class="checkbox-horizontal-margin" formControlName="dyspareunia">Dispareunia</mat-checkbox>
+      </section>
+    </div>
+
+    <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>Tipo de ciclo menstrual</mat-label>
+      <input type="text" matInput formControlName="typeMenstrualCicle">
+      <mat-error
+        *ngIf="tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.typeMenstrualCicle'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.typeMenstrualCicle'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-3" appearance="standard">
+      <mat-label>No. de gestas</mat-label>
+      <input type="number" matInput formControlName="numberOfFeats">
+      <mat-error
+        *ngIf="tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.numberOfFeats'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.numberOfFeats'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-3" appearance="standard">
+      <mat-label>No. de abortos</mat-label>
+      <input type="number" matInput formControlName="numberOfAbortions">
+      <mat-error
+        *ngIf="tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.numberOfAbortions'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.numberOfAbortions'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-3" appearance="standard">
+      <mat-label>No. de partos</mat-label>
+      <input type="number" matInput formControlName="numberOfDeliveries">
+      <mat-error
+        *ngIf="tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.numberOfDeliveries'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.numberOfDeliveries'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-3" appearance="standard">
+      <mat-label>No. de cesáreas</mat-label>
+      <input type="number" matInput formControlName="numberOfCaesareanSections">
+      <mat-error
+        *ngIf="tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.numberOfCaesareanSections'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.numberOfCaesareanSections'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-4" appearance="standard">
+      <mat-label>Fecha de último procedimiento</mat-label>
+      <input matInput [matDatepicker]="dateLastProcedure" formControlName="dateLastProcedure">
+      <mat-datepicker-toggle matSuffix [for]="dateLastProcedure"></mat-datepicker-toggle>
+      <mat-datepicker #dateLastProcedure></mat-datepicker>
+      <mat-error
+        *ngIf="tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.dateLastProcedure'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.dateLastProcedure'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-12" appearance="standard">
+      <mat-label>Observaciones</mat-label>
+      <textarea matInput formControlName="observations"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.observations'))">
+        {{tValidation.checkForErrors(recordsFormGroup.get('obstetricGynecologicalHistory.observations'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+</div>

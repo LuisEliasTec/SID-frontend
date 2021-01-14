@@ -1,0 +1,17 @@
+<nav class="tool-bar">
+  <div class="tool-bar-container">
+    <div class="description-section">
+      <h3 class="text-primary">Cirugías</h3>
+      <span class="text-secondary">Todo sobre cirugías</span>
+    </div>
+    <div class="action-section d-flex">
+      <button class="btn-base btn-tool-icon">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <button class="btn-base btn-tool" routerLink="nueva-cirugia" type="button">Nueva cirugía</button>
+    </div>
+  </div>
+</nav>
+
+<app-list-surgeries></app-list-surgeries>
+<router-outlet></router-outlet>

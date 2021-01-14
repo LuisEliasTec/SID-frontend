@@ -1,0 +1,68 @@
+<div [formGroup]="admissionHistoryFormGroup" class="form-group">
+
+  <h3>Historia de ingreso</h3>
+  <h4>Padecimientos actuales</h4>
+
+  <div class="row">
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Padecimiento/Enfermedad</mat-label>
+      <input type="text" matInput formControlName="currentCondition">
+      <mat-error *ngIf="tValidation.checkForErrors(admissionHistoryFormGroup.get('currentCondition'))">
+        {{tValidation.checkForErrors(admissionHistoryFormGroup.get('currentCondition'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <h4>Padecimientos actuales</h4>
+
+  <div class="row" formGroupName="physicalExploration">
+    <mat-form-field class="col-lg-3" appearance="standard">
+      <mat-label>Peso</mat-label>
+      <textarea matInput formControlName="weight"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(admissionHistoryFormGroup.get('physicalExploration.weight'))">
+        {{tValidation.checkForErrors(admissionHistoryFormGroup.get('physicalExploration.weight'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-3" appearance="standard">
+      <mat-label>Medida</mat-label>
+      <textarea matInput formControlName="measure"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(admissionHistoryFormGroup.get('physicalExploration.measure'))">
+        {{tValidation.checkForErrors(admissionHistoryFormGroup.get('physicalExploration.measure'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-3" appearance="standard">
+      <mat-label>Talla</mat-label>
+      <textarea matInput formControlName="size"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(admissionHistoryFormGroup.get('physicalExploration.size'))">
+        {{tValidation.checkForErrors(admissionHistoryFormGroup.get('physicalExploration.size'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-12" appearance="standard">
+      <mat-label>Observaciones</mat-label>
+      <textarea matInput formControlName="observations"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(admissionHistoryFormGroup.get('physicalExploration.observations'))">
+        {{tValidation.checkForErrors(admissionHistoryFormGroup.get('physicalExploration.observations'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <h3>Impresión diagnóstica</h3>
+
+  <div class="row">
+    <mat-form-field class="col-lg-12" appearance="standard">
+      <mat-label>Observaciones</mat-label>
+      <textarea matInput formControlName="diagnosticImpression"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(admissionHistoryFormGroup.get('diagnosticImpression'))">
+        {{tValidation.checkForErrors(admissionHistoryFormGroup.get('diagnosticImpression'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+</div>

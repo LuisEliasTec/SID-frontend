@@ -14,6 +14,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DialogHeaderModule } from 'src/app/components/layout/dialog-header/dialog-header.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const routes: Routes = [
   {
@@ -38,7 +39,8 @@ const routes: Routes = [
     MatNativeDateModule,
     MatIconModule,
     MatTabsModule,
-    DialogHeaderModule
+    DialogHeaderModule,
+    NgSelectModule
   ],
   exports: [RouterModule]
 })

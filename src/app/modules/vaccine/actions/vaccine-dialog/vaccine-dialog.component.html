@@ -1,0 +1,29 @@
+<app-dialog-header [subtitle]="'Ingrese los campos correspondientes'" [title]="titleDialog" (closeDialogEvent)="closeDialog($event)">
+</app-dialog-header>
+
+<div *ngIf="isIdIn" [formGroup]="vaccineFormGroup" class="form-group">
+
+  <div class="row">
+    <mat-form-field class="col-lg-6" appearance="standard">
+      <mat-label>Nombre *</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-error *ngIf="tValidation.checkForErrors(vaccineFormGroup.get('name'))">
+        {{tValidation.checkForErrors(vaccineFormGroup.get('name'))}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-12" appearance="standard">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+      <mat-error *ngIf="tValidation.checkForErrors(vaccineFormGroup.get('description'))">
+        {{tValidation.checkForErrors(vaccineFormGroup.get('description'))}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row dialog-actions">
+    <button class="btn-base btn-secondary-dialog" (click)="onNoClick()">Cancelar</button>
+    <button class="btn-base btn-primary-dialog" [disabled]="vaccineFormGroup.invalid" (click)="onSubmit()">Guardar</button>
+  </div>
+
+</div>

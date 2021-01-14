@@ -1,9 +1,10 @@
 import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IUser } from 'src/app/ models/user.interface';
 import { DialogDataExchange } from 'src/app/providers/dialog-data-exchange/dialog-data-exchange.service';
 import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
+import { IResponse } from 'src/app/ models/response.interface';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-list-employees',
@@ -12,8 +13,9 @@ import { RestApiService } from 'src/app/providers/rest-api/rest-api.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class ListEmployeesComponent implements OnDestroy {
-  public dataSource: IUser[] = [];
-  public displayedColumns: string[] = ['id', 'name', 'birthDate', 'phoneNumber', 'optionalPhoneNumber', 'email', 'status', 'actions'];
+  public dataSource = new MatTableDataSource();
+  public displayedColumns: string[] = ['id', 'name', 'birthDate', 'phoneNumber',
+    'optionalPhoneNumber', 'email', 'status', 'actions'];
   subscription: Subscription;
 
   constructor(
@@ -34,20 +36,21 @@ export class ListEmployeesComponent implements OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  modify(data) {
-    this.router.navigate(['actualizar', data._id], { relativeTo: this.activatedRouter });
+  modify(data): void{
+    this.router.navigate(['actualizar', data._id],
+      { relativeTo: this.activatedRouter });
   }
 
-  delete(data) {
+  delete(data): void {
     this.restApiService.delete('employee', data._id).subscribe((res) => {
       this.getEmployees();
     });
   }
 
-  getEmployees() {
-    this.restApiService.get('employee/list').subscribe((res) => {
+  public getEmployees(page = 0, pageSize = 5): void {
+    this.restApiService.get('employee/list', null, { page, pageSize }).subscribe((res: IResponse) => {
       this.dataSource = res._data;
     });
   }
-  
+
 }
